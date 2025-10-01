@@ -489,27 +489,10 @@
             
             renderChart(index); 
             
-            // Lógica para exibir o botão de liberação do próximo encontro.
+            // Lógica para exibir o botão de liberação do próximo encontro (agora oculto).
             const releaseContainer = activeContent.querySelector('.release-container');
             if (releaseContainer) {
-                releaseContainer.innerHTML = ''; // Limpa o container
-                
-                // Mostra o botão "Liberar Encontro" do Encontro 1 ao 5
-                if (index < courseData.length - 2) { 
-                    const nextIndex = index + 1;
-                    releaseContainer.innerHTML = `
-                        <div class="flex flex-col items-center mt-8 pt-4 border-t border-stone-700">
-                            <button onclick="releaseEncontro(${nextIndex})" 
-                                    class="px-6 py-2 text-white font-bold rounded-lg shadow-lg transition-colors duration-300" 
-                                    style="background-color: #837492;"
-                                    onmouseover="this.style.backgroundColor='#685C74'"
-                                    onmouseout="this.style.backgroundColor='#837492'">
-                                Liberar Encontro ${nextIndex + 1}
-                            </button>
-                            <div id="release-message" class="h-6"></div>
-                        </div>
-                    `;
-                }
+                releaseContainer.innerHTML = ''; // Garante que o container fique limpo.
             }
         }
 
@@ -678,6 +661,4 @@
     </script>
 </body>
 </html>
-
-
 
