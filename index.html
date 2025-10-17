@@ -71,7 +71,7 @@
             font-weight: 600;
             border-color: #837492;
         }
-        /* Classe para botões ocultos */
+        /* Classe para botões ocultos - não mais utilizada para travar, mas mantida caso necessária */
         .stepper-btn.hidden-access {
             opacity: 0.3;
             pointer-events: none;
@@ -151,7 +151,49 @@
                 title: "Engenharia de Prompts",
                 icon: "💬",
                 subtitle: "A arte de fazer as perguntas certas para a IA.",
-                objective: "Treinar a habilidade de criar prompts eficazes para decompor e esclarecer problemas, focando na compreensão do enunciado antes de buscar a solução. A ênfase é na clareza da especificação.",
+                objective: `Treinar a habilidade de criar prompts eficazes para decompor e esclarecer problemas, focando na compreensão do enunciado antes de buscar a solução. A ênfase é na clareza da especificação.
+                        <div class="mt-4 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md text-left">
+                            <h4 class="font-bold text-stone-100 mb-2">💡 O que é um Prompt para IAG?</h4>
+                            <p class="text-sm text-stone-300">O objetivo fundamental de um prompt para Inteligência Artificial (IA) é servir como uma instrução clara e precisa que guia a IA para gerar a resposta mais relevante, útil e específica possível. Em essência, o prompt é a ponte de comunicação entre o usuário e o modelo de linguagem, traduzindo uma necessidade humana em um comando que a máquina possa compreender e executar.</p>
+                        </div>
+                        <div class="mt-4 text-left">
+                            <h4 class="font-bold text-stone-100 mb-2">Instruções para um bom prompt:</h4>
+                            <ul class="list-disc list-inside space-y-4 text-stone-300 text-sm">
+                                <li><span class="font-semibold color-metodologia">Defina a Persona da IA.</span> (Deixe claro qual será o papel da IA)
+                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                        Exemplo: "Você é um engenheiro de software sênior da Google, especialista em otimização de algoritmos."
+                                    </p>
+                                </li>
+                                <li><span class="font-semibold color-metodologia">O que a IA precisa fazer.</span> (Direcionar a tarefa)
+                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                        Exemplo: "Explique o conceito de recursividade em programação."
+                                    </p>
+                                </li>
+                                <li><span class="font-semibold color-metodologia">Fornecer Contexto.</span> (Estabelecer um foco)
+                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                        Exemplo: "Estou estudando para uma prova de Estrutura de Dados e tenho dificuldade em entender a diferença de performance entre uma busca binária recursiva e uma iterativa."
+                                    </p>
+                                </li>
+                                <li><span class="font-semibold color-metodologia">Pra quem ela está falando.</span> (Estabelecer o tom e o estilo)
+                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                        Exemplo: "A explicação deve ser clara para um aluno do primeiro ano de Engenharia da Computação, que já entende de laços de repetição (for/while), mas nunca viu recursividade."
+                                    </p>
+                                </li>
+                                <li><span class="font-semibold color-metodologia">Regras e Limitações.</span> (Especificar o que é importante e o que não é)
+                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                        Exemplo: "Não use código em Python, apenas pseudocódigo. Evite explicações matemáticas complexas sobre a complexidade de espaço e foque na intuição por trás do consumo de memória."
+                                    </p>
+                                </li>
+                                <li><span class="font-semibold color-metodologia">Definir o Formato da Saída.</span> (Exemplo de resposta)
+                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                        Exemplo: "Organize a resposta da seguinte forma:<br>Analogia: Uma analogia simples do dia a dia para recursividade.<br>Pseudocódigo: O pseudocódigo de uma função de fatorial recursiva.<br>Explicação passo a passo: Mostre a pilha de chamadas para fatorial(3).<br>Vantagens e Desvantagens: Uma tabela comparando a abordagem recursiva com a iterativa."
+                                    </p>
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md">
+                                <p class="text-sm text-stone-100 font-semibold text-center">⚠️ Vale lembrar que a língua "nativa" da maioria das IAs Generativas é o inglês, sendo interessante mudar o Idioma para Refinar Resultados!</p>
+                            </div>
+                        </div>`,
                 activities: [
                     { label: "Planejamento (20 min)", duration: 20, icon: "📝" },
                     { label: "Estudo com IA (50 min)", duration: 50, icon: "💻" },
@@ -159,20 +201,82 @@
                     { label: "Dúvidas e Perguntas (30 min)", duration: 30, icon: "❓" }
                 ],
                 extraContent: `
-                    <div class="mt-6 border-t border-stone-700 pt-6">
-                        <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                        <ul class="space-y-4 text-stone-300">
-                            <li>
-                                <span class="font-bold color-primary">Planejamento:</span> Receber um enunciado de problema intencionalmente vago. A tarefa é listar quais informações estão faltando para que o problema possa ser resolvido.
-                            </li>
-                            <li>
-                                <span class="font-bold color-primary">Estudo com IA:</span> Iniciar uma conversa interativa com a IAG. O objetivo é criar prompts para esclarecer o problema, perguntando sobre: contexto, exemplos de entradas/saídas e possíveis casos extremos a serem considerados.
-                            </li>
-                            <li>
-                                <span class="font-bold color-primary">Reflexão:</span> Comparar o enunciado original com a versão refinada após a conversa com a IAG. Discutir quais tipos de prompts geraram as respostas mais úteis e como essa clareza inicial impacta a chance de sucesso na codificação.
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="mt-6 border-t border-stone-700 pt-6">
+                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🚀 Exemplo Prático</h3>
+                            <div class="p-4 bg-stone-700/60 rounded-lg border-2 border-tools-card-general">
+                                <p class="text-stone-300">Você é um Engenheiro de Computação atuando como assistente do Gerente do Mercado Paraná. Sua tarefa é desenvolver o módulo principal de verificação de descontos para um novo Terminal de Consulta Interativo. O cliente consultará o código de barras sozinho. Seu sistema deve aplicar um desconto de 15% se o produto estiver em 'promoção' ou 'vencimento_proximo'.</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 border-t border-stone-700 pt-6">
+                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                            <ul class="space-y-4 text-stone-300">
+                                <li>
+                                    <span class="font-bold color-metodologia">Planejamento:</span> Crie um sistema para gerenciar um cadastro de alunos em linguagem C.
+                                </li>
+                                <li>
+                                    <span class="font-bold color-metodologia">Estudo com IA:</span> Iniciar uma conversa interativa com a IAG. O objetivo é criar prompts para esclarecer o problema, perguntando sobre: contexto, exemplos de entradas/saídas e possíveis casos extremos a serem considerados.
+                                </li>
+                                <li>
+                                    <span class="font-bold color-metodologia">Reflexão:</span> Comparar o enunciado original com a versão refinada após a conversa com a IAG. Discutir quais tipos de prompts geraram as respostas mais úteis e como essa clareza inicial impacta a chance de sucesso na codificação.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-6 border-t border-stone-700 pt-6">
+                            <h3 class="text-lg font-semibold text-stone-100 mb-3">📚 Referências</h3>
+                            <ul class="list-disc list-inside space-y-3 text-stone-300 text-sm">
+                                <li>
+                                    <strong class="color-metodologia">Google for Developers - Introduction to prompt design</strong><br>
+                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> Clareza e "Few-shot prompting" (fornecer exemplos).</span><br>
+                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://developers.google.com/machine-learning/resources/prompt-engineering" target="_blank" class="text-stone-300 hover:underline break-all">https://developers.google.com/machine-learning/resources/prompt-engineering</a>
+                                </li>
+                                <li>
+                                    <strong class="color-metodologia">Google Cloud - Design de prompts de texto</strong><br>
+                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> Atribuição de Persona.</span><br>
+                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://cloud.google.com/vertex-ai/docs/generative-ai/learn/prompt-design" target="_blank" class="text-stone-300 hover:underline break-all">https://cloud.google.com/vertex-ai/docs/generative-ai/learn/prompt-design</a>
+                                </li>
+                                <li>
+                                    <strong class="color-metodologia">OpenAI Documentation - Prompt engineering (Instruções Claras)</strong><br>
+                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> A importância de instruções claras.</span><br>
+                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://platform.openai.com/docs/guides/prompt-engineering/strategy-write-clear-instructions" target="_blank" class="text-stone-300 hover:underline break-all">https://platform.openai.com/docs/guides/prompt-engineering/strategy-write-clear-instructions</a>
+                                </li>
+                                <li>
+                                    <strong class="color-metodologia">OpenAI Documentation - Prompt engineering (Texto de Referência)</strong><br>
+                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> Fornecer texto de referência.</span><br>
+                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://platform.openai.com/docs/guides/prompt-engineering/strategy-provide-reference-text" target="_blank" class="text-stone-300 hover:underline break-all">https://platform.openai.com/docs/guides/prompt-engineering/strategy-provide-reference-text</a>
+                                </li>
+                                <li>
+                                    <strong class="color-metodologia">Anthropic Documentation - Introduction to prompting</strong><br>
+                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> Clareza, especificidade e o uso de exemplos.</span><br>
+                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://docs.anthropic.com/claude/docs/introduction-to-prompting" target="_blank" class="text-stone-300 hover:underline break-all">https://docs.anthropic.com/claude/docs/introduction-to-prompting</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-6 border-t border-stone-700 pt-6">
+                            <div class="relative p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md">
+                                <span class="absolute top-3 right-3 bg-stone-700 text-stone-300 text-xs font-semibold px-2 py-0.5 rounded-full uppercase">Opcional</span>
+                                <h4 class="font-bold text-stone-100 mb-2 text-center">🏆 Missão Bônus</h4>
+                                <p class="text-sm text-stone-300 text-left mb-4">Você foi contratado como desenvolvedor(a) júnior por uma clínica e sua primeira tarefa é criar um protótipo de um sistema para o gerenciamento de pacientes. O sistema deve ser desenvolvido em linguagem C e rodar em um console (terminal). A principal diretriz do seu gestor é que você utilize Ferramentas de Inteligência Artificial Generativa (como Gemini, ChatGPT, etc.) como suas assistentes de programação para otimizar seu tempo e aprender com as melhores práticas.</p>
+                                <p class="text-sm text-stone-300 text-left mb-4">O objetivo desta tarefa não é apenas entregar um código funcional, mas demonstrar sua habilidade de colaborar com uma IAG para resolver um problema. Queremos ver como você usa a IA para aprender, depurar e otimizar.</p>
+                                <h5 class="font-semibold text-stone-200 text-left text-sm mb-2">Entregáveis:</h5>
+                                <ul class="list-disc list-inside text-sm text-stone-300 text-left space-y-1">
+                                    <li><span class="font-semibold">Código-Fonte:</span> Código (.c), devidamente comentado.</li>
+                                    <li><span class="font-semibold">Histórico de Conversa:</span> Um arquivo PDF ou link compartilhável contendo todo o histórico de prompts e respostas com a(s) IAG(s) que você utilizou.</li>
+                                </ul>
+                                <h5 class="font-semibold text-stone-200 text-left text-sm mb-2 mt-4">Instruções de Entrega:</h5>
+                                <p class="text-sm text-stone-300 text-left mb-4">Para entregar a atividade, crie uma pasta com seu nome completo. Dentro dela, coloque o código (.c) e o histórico da conversa (PDF). Depois, compacte essa pasta em um arquivo .zip e a envie no Drive.</p>
+                                <div class="mt-4 pt-3 border-t border-stone-500/50 text-center">
+                                    <p class="text-sm font-semibold text-stone-100 mb-4">
+                                        <span class="mr-2">🎁</span> Recompensa: +2 horas complementares
+                                    </p>
+                                    <a href="https://drive.google.com/drive/folders/1IuIiothQSaw5_66YSWYL_LnysFIQtmbs?usp=sharing" target="_blank" class="inline-block px-5 py-2 text-sm text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #685C74;">
+                                        <span class="mr-2">🚀</span> Entregar Missão
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center color-plano-pro text-sm mt-6 font-semibold">
+                            Não é mágica, é clareza! Lembre-se, prompt bem feito = IA afiada.
+                        </p>
                 `
             },
             {
@@ -187,26 +291,26 @@
                     { label: "Dúvidas e Perguntas (30 min)", duration: 30, icon: "❓" }
                 ],
                 extraContent: `
-                    <div class="mt-6 border-t border-stone-700 pt-6">
-                        <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                        <ul class="space-y-4 text-stone-300">
-                            <li>
-                                <span class="font-bold color-primary">Planejamento:</span> Delinear um plano de como a solução deve funcionar, quais funções serão necessárias e quais testes poderiam validá-la.
-                            </li>
-                            <li>
-                                <span class="font-bold color-primary">Estudo com IA:</span> 
-                                <ul class="list-disc ml-6 mt-1 space-y-1">
-                                    <li>Pedir à IAG que gere o código para o problema.</li>
-                                    <li>Pedir à IAG para explicar partes específicas do código.</li>
-                                    <li>Pedir para a IAG gerar um conjunto de casos de teste.</li>
-                                    <li>Executar o código com os testes para verificar o funcionamento.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <span class="font-bold color-primary">Reflexão:</span> Debater: O código estava correto na primeira tentativa? A explicação da IAG ajudou a entendê-lo melhor? Essa atividade reforça a necessidade de monitorar a compreensão e inspecionar e adaptar o código.
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="mt-6 border-t border-stone-700 pt-6">
+                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                            <ul class="space-y-4 text-stone-300">
+                                <li>
+                                    <span class="font-bold color-primary">Planejamento:</span> Delinear um plano de como a solução deve funcionar, quais funções serão necessárias e quais testes poderiam validá-la.
+                                </li>
+                                <li>
+                                    <span class="font-bold color-primary">Estudo com IA:</span> 
+                                    <ul class="list-disc ml-6 mt-1 space-y-1">
+                                        <li>Pedir à IAG que gere o código para o problema.</li>
+                                        <li>Pedir à IAG para explicar partes específicas do código.</li>
+                                        <li>Pedir para a IAG gerar um conjunto de casos de teste.</li>
+                                        <li>Executar o código com os testes para verificar o funcionamento.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="font-bold color-primary">Reflexão:</span> Debater: O código estava correto na primeira tentativa? A explicação da IAG ajudou a entendê-lo melhor? Essa atividade reforça a necessidade de monitorar a compreensão e inspecionar e adaptar o código.
+                                </li>
+                            </ul>
+                        </div>
                 `
             },
             {
@@ -221,20 +325,20 @@
                     { label: "Dúvidas e Perguntas (30 min)", duration: 30, icon: "❓" }
                 ],
                 extraContent: `
-                    <div class="mt-6 border-t border-stone-700 pt-6">
-                        <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                        <ul class="space-y-4 text-stone-300">
-                            <li>
-                                <span class="font-bold color-primary">Planejamento:</span> Receber um enunciado de problema intencionalmente vago. A tarefa é listar quais informações estão faltando para que o problema possa ser resolvido.
-                            </li>
-                            <li>
-                                <span class="font-bold color-primary">Estudo com IA:</span> Solicitar à IAG o código para cada componente separadamente. A principal tarefa do aluno é integrar essas peças de código, garantindo que funcionem juntas corretamente.
-                            </li>
-                            <li>
-                                <span class="font-bold color-primary">Reflexão:</span> Discutir: Quais foram os desafios ao integrar os códigos gerados? As partes geradas pela IAG eram compatíveis? Essa tarefa força o aluno a manter o monitoramento do processo global.
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="mt-6 border-t border-stone-700 pt-6">
+                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                            <ul class="space-y-4 text-stone-300">
+                                <li>
+                                    <span class="font-bold color-primary">Planejamento:</span> Receber um enunciado de problema intencionalmente vago. A tarefa é listar quais informações estão faltando para que o problema possa ser resolvido.
+                                </li>
+                                <li>
+                                    <span class="font-bold color-primary">Estudo com IA:</span> Solicitar à IAG o código para cada componente separadamente. A principal tarefa do aluno é integrar essas peças de código, garantindo que funcionem juntas corretamente.
+                                </li>
+                                <li>
+                                    <span class="font-bold color-primary">Reflexão:</span> Discutir: Quais foram os desafios ao integrar os códigos gerados? As partes geradas pela IAG eram compatíveis? Essa tarefa força o aluno a manter o monitoramento do processo global.
+                                </li>
+                            </ul>
+                        </div>
                 `
             },
             {
@@ -248,19 +352,19 @@
                     { label: "Dúvidas e Perguntas (30 min)", duration: 30, icon: "❓" }
                 ],
                 extraContent: `
-                    <div class="mt-6 border-t border-stone-700 pt-6">
-                        <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                        <p class="text-stone-300 mb-4 font-bold color-primary">Fase 1: Resolução do Problema</p>
-                        <ul class="space-y-2 text-stone-300 mb-4">
-                            <li><span class="font-bold color-primary">Planejamento:</span> Escolher um problema desafiador e definir um plano de ataque inicial.</li>
-                            <li><span class="font-bold color-primary">Estudo com IA:</span> Interagir livremente com a IAG para gerar ideias, depurar erros ou escrever trechos de código, buscando uma primeira versão funcional.</li>
-                        </ul>
-                        <p class="text-stone-300 mb-4 font-bold color-primary">Fase 2: Refatoração e Otimização</p>
-                         <ul class="space-y-2 text-stone-300">
-                            <li><span class="font-bold color-primary">Análise Crítica:</span> Analisar o código recém-criado, levantando hipóteses sobre pontos de melhoria (eficiência, legibilidade).</li>
-                            <li><span class="font-bold color-primary">Estudo com IA:</span> Apresentar o próprio código à IAG e fazer perguntas focadas em aprimoramento ("Como posso refatorar? É mais eficiente?"). O aluno implementa as sugestões pertinentes.</li>
-                        </ul>
-                    </div>
+                        <div class="mt-6 border-t border-stone-700 pt-6">
+                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                            <p class="text-stone-300 mb-4 font-bold color-primary">Fase 1: Resolução do Problema</p>
+                            <ul class="space-y-2 text-stone-300 mb-4">
+                                <li><span class="font-bold color-primary">Planejamento:</span> Escolher um problema desafiador e definir um plano de ataque inicial.</li>
+                                <li><span class="font-bold color-primary">Estudo com IA:</span> Interagir livremente com a IAG para gerar ideias, depurar erros ou escrever trechos de código, buscando uma primeira versão funcional.</li>
+                            </ul>
+                            <p class="text-stone-300 mb-4 font-bold color-primary">Fase 2: Refatoração e Otimização</p>
+                             <ul class="space-y-2 text-stone-300">
+                                <li><span class="font-bold color-primary">Análise Crítica:</span> Analisar o código recém-criado, levantando hipóteses sobre pontos de melhoria (eficiência, legibilidade).</li>
+                                <li><span class="font-bold color-primary">Estudo com IA:</span> Apresentar o próprio código à IAG e fazer perguntas focadas em aprimoramento ("Como posso refatorar? É mais eficiente?"). O aluno implementa as sugestões pertinentes.</li>
+                            </ul>
+                        </div>
                 `
             },
             {
@@ -273,24 +377,24 @@
                     { label: "Ensaio Reflexivo (50 min)", duration: 50, icon: "✍️" }
                 ],
                 extraContent: `
-                    <div class="mt-6 border-t border-stone-700 pt-6">
-                        <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                        <p class="text-stone-300 mb-4 font-bold color-primary">Ensaio Reflexivo (Atividade Principal)</p>
-                        <ul class="space-y-4 text-stone-300">
-                            <li>
-                                <span class="font-bold color-primary">Objetivo:</span> Consolidar o processo, analisando o diálogo com a IA e a jornada de aprendizado.
-                            </li>
-                            <li>
-                                <span class="font-bold color-primary">Pontos a Abordar:</span> 
-                                <ul class="list-disc ml-6 mt-1 space-y-1">
-                                    <li>Planejamento e Adaptação: Qual foi o plano inicial e como ele mudou com a IA?</li>
-                                    <li>Monitoramento e Correção: Em que momento percebeu um erro e como corrigiu o curso (com ou sem a ajuda da IA)?</li>
-                                    <li>Avaliação Crítica: A IAG deu respostas erradas? As sugestões de refatoração melhoraram o código?</li>
-                                    <li>Autoavaliação Geral: Quais estratégias de TAA eu usei e como meu papel mudou de 'criador' para 'revisor/otimizador'?</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="mt-6 border-t border-stone-700 pt-6">
+                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                            <p class="text-stone-300 mb-4 font-bold color-primary">Ensaio Reflexivo (Atividade Principal)</p>
+                            <ul class="space-y-4 text-stone-300">
+                                <li>
+                                    <span class="font-bold color-primary">Objetivo:</span> Consolidar o processo, analisando o diálogo com a IA e a jornada de aprendizado.
+                                </li>
+                                <li>
+                                    <span class="font-bold color-primary">Pontos a Abordar:</span> 
+                                    <ul class="list-disc ml-6 mt-1 space-y-1">
+                                        <li>Planejamento e Adaptação: Qual foi o plano inicial e como ele mudou com a IA?</li>
+                                        <li>Monitoramento e Correção: Em que momento percebeu um erro e como corrigiu o curso (com ou sem a ajuda da IA)?</li>
+                                        <li>Avaliação Crítica: A IAG deu respostas erradas? As sugestões de refatoração melhoraram o código?</li>
+                                        <li>Autoavaliação Geral: Quais estratégias de TAA eu usei e como meu papel mudou de 'criador' para 'revisor/otimizador'?</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                 `
             },
             {
@@ -300,14 +404,14 @@
                 objective: "", 
                 activities: [], 
                 extraContent: `
-                    <div class="mt-6 p-8 bg-stone-700/70 rounded-lg text-center border-2 border-materiais-apoio">
-                        <h3 class="text-2xl font-semibold color-extras-titulo mb-2">Materiais de Apoio</h3>
-                        <p class="mt-2 text-stone-300 mb-6">Acesse aqui os PDFs das diciplinas de Fundamentos de Programação 1 e Fundamentos de Programação 2, disponibilizados pelo Professor Muriel Godoi.</p>
-                        <a href="https://drive.google.com/file/d/155DsSSHB-HWsi85Ytytf9GfzS6mIxIMz/view?usp=drive_link" target="_blank" class="inline-block px-6 py-3 text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #837492;">
-                            <span class="mr-2">📂</span> PDF's: Fundamentos de Programação
-                        </a>
-                        <p class="mt-4 text-xs text-stone-400">© Professor Muriel Godoi. Material fornecido e todos os direitos reservados.</p>
-                    </div>
+                        <div class="mt-6 p-8 bg-stone-700/70 rounded-lg text-center border-2 border-materiais-apoio">
+                            <h3 class="text-2xl font-semibold color-extras-titulo mb-2">Materiais de Apoio</h3>
+                            <p class="mt-2 text-stone-300 mb-6">Acesse aqui os PDFs das diciplinas de Fundamentos de Programação 1 e Fundamentos de Programação 2, disponibilizados pelo Professor Muriel Godoi.</p>
+                            <a href="https://drive.google.com/file/d/155DsSSHB-HWsi85Ytytf9GfzS6mIxIMz/view?usp=drive_link" target="_blank" class="inline-block px-6 py-3 text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #837492;">
+                                <span class="mr-2">📂</span> PDF's: Fundamentos de Programação
+                            </a>
+                            <p class="mt-4 text-xs text-stone-400">© Professor Muriel Godoi. Material fornecido e todos os direitos reservados.</p>
+                        </div>
                `
             }
         ];
@@ -325,8 +429,8 @@
             activities.forEach((activity, index) => {
                 let borderClass = 'border-secondary'; 
                 
-                // Aplica cores personalizadas para o Encontro 1
-                if (currentEncontroIndex === 0) {
+                // Aplica cores personalizadas para o Encontro 1 e 2
+                if (currentEncontroIndex === 0 || currentEncontroIndex === 1) {
                     if (index === 0) borderClass = 'border-color-e1-0';
                     else if (index === 1) borderClass = 'border-color-e1-1';
                     else if (index === 2) borderClass = 'border-color-e1-2';
@@ -335,13 +439,13 @@
                 }
 
                 html += `
-                    <div class="bg-stone-700/60 p-3 rounded-lg border-2 ${borderClass} shadow-sm flex items-center">
-                        <span class="text-2xl mr-3">${activity.icon}</span>
-                        <div class="flex-grow">
-                            <h4 class="font-medium text-stone-100 text-sm">${activity.label}</h4>
-                            <p class="text-xs text-zinc-300 font-semibold">${activity.duration} min</p>
+                        <div class="bg-stone-700/60 p-3 rounded-lg border-2 ${borderClass} shadow-sm flex items-center">
+                            <span class="text-2xl mr-3">${activity.icon}</span>
+                            <div class="flex-grow">
+                                <h4 class="font-medium text-stone-100 text-sm">${activity.label}</h4>
+                                <p class="text-xs text-zinc-300 font-semibold">${activity.duration} min</p>
+                            </div>
                         </div>
-                    </div>
                 `;
             });
             html += '</div>';
@@ -377,16 +481,12 @@
                 'rgba(255, 255, 255, 0.9)'
             ];
             let hoverBackgroundColors = [
-                'rgba(6, 182, 212, 1)',
-                'rgba(240, 151, 255, 1)',
-                'rgba(228, 228, 231, 1)',
-                'rgba(163, 163, 163, 1)',
                 'rgba(87, 83, 78, 1)',
                 'rgba(255, 255, 255, 1)'
             ];
 
-            // Cores personalizadas para o gráfico do Encontro 1
-            if (encontroIndex === 0) {
+            // Cores personalizadas para o gráfico do Encontro 1 e 2
+            if (encontroIndex === 0 || encontroIndex === 1) {
                 backgroundColors = [
                     'rgba(104, 92, 116, 0.9)',
                     'rgba(131, 116, 146, 0.9)',
@@ -450,25 +550,6 @@
             return renderActivityCards(courseData[index].activities);
         }
         
-        function releaseEncontro(nextIndex) {
-            if (nextIndex >= courseData.length) return;
-            
-            const nextButton = document.querySelector(`.stepper-btn[data-index="${nextIndex}"]`);
-            if (nextButton) {
-                nextButton.classList.remove('hidden-access');
-                nextButton.onclick = () => showEncontro(nextIndex); 
-                
-                const releaseMessage = document.getElementById('release-message');
-                if (releaseMessage) {
-                    const buttonText = nextButton.textContent;
-                    releaseMessage.innerHTML = `<p class="mt-4 text-center text-sm color-primary font-semibold">✅ ${buttonText} liberado!</p>`;
-                    setTimeout(() => {
-                        releaseMessage.innerHTML = '';
-                    }, 3000);
-                }
-            }
-        }
-
         function showEncontro(index) {
             currentEncontroIndex = index; 
             
@@ -489,12 +570,6 @@
             }
             
             renderChart(index); 
-            
-            // Lógica para exibir o botão de liberação do próximo encontro (agora oculto).
-            const releaseContainer = activeContent.querySelector('.release-container');
-            if (releaseContainer) {
-                releaseContainer.innerHTML = ''; // Garante que o container fique limpo.
-            }
         }
 
         // --- Função INIT (Principal) ---
@@ -509,8 +584,8 @@
                 button.textContent = encontro.title === 'Extras' ? 'Extras' : `Encontro ${index + 1}`;
                 button.dataset.index = index;
                 
-                // Oculta todos os botões exceto o Encontro 1 e o Extras
-                if (index > 0 && index < courseData.length - 1) { 
+                // Oculta os botões dos Encontros 3 a 6
+                if (index > 1 && index < courseData.length - 1) { 
                     button.classList.add('hidden-access');
                     button.onclick = null;
                 } else {
@@ -526,127 +601,127 @@
                 contentDiv.className = 'encontro-content p-6 md:p-8 rounded-xl shadow-lg border';
                 
                 let mainContentHtml = `
-                    <div class="text-center">
-                        <h2 class="text-2xl md:text-3xl font-bold text-stone-50 color-primary">${encontro.icon} ${encontro.title}</h2>
-                        <p class="mt-1 text-stone-400">${encontro.subtitle}</p>
-                    </div>
+                        <div class="text-center">
+                            <h2 class="text-2xl md:text-3xl font-bold text-stone-50 color-primary">${encontro.icon} ${encontro.title}</h2>
+                            <p class="mt-1 text-stone-400">${encontro.subtitle}</p>
+                        </div>
                 `;
 
                 if (!isExtra) {
                     mainContentHtml += `
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                            <h3 class="text-lg font-semibold text-stone-100">🎯 Objetivo da Sessão</h3>
-                            <p class="mt-2 text-stone-300">${encontro.objective}</p>
-                        </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100">🎯 Objetivo da Sessão</h3>
+                                <p class="mt-2 text-stone-300">${encontro.objective}</p>
+                            </div>
                     `;
                     
                     // BLOCO METODOLOGIA (APENAS ENCONTRO 1)
                     if (index === 0) {
                         mainContentHtml += `
-                            <div class="mt-6 border-t border-stone-700 pt-6">
-                                <h3 class="text-lg font-semibold text-stone-100 mb-2">📚 Metodologia de Estudo</h3>
-                                <div class="space-y-4 text-stone-300 mb-6">
-                                    <p>
-                                        <span class="font-bold color-metodologia">TAA (Autorregulação da Aprendizagem):</span> É a capacidade do estudante de gerenciar ativamente seus próprios pensamentos, comportamentos e emoções para atingir seus objetivos de aprendizado.
-                                    </p>
-                                    <p>
-                                        <span class="font-bold color-metodologia">Repetição Espaçada:</span> É a técnica de revisão de conteúdo em intervalos de tempo crescentes. Nossa oficina está estruturada para que as habilidades centrais sejam revisitadas e aprimoradas em encontros posteriores.
-                                    </p>
-                                    <div class="p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md">
-                                        <h4 class="font-bold color-primary mb-1 text-stone-100">⭐ Dica Bônus: Diário de Estudos</h4>
-                                        <p class="text-sm text-stone-300">Registre brevemente, ao final de cada encontro, o que aprendeu, onde errou e qual foi o prompt mais eficaz. Isso otimiza a sua Repetição Espaçada e acelera o aprendizado!</p>
+                                <div class="mt-6 border-t border-stone-700 pt-6">
+                                    <h3 class="text-lg font-semibold text-stone-100 mb-2">📚 Metodologia de Estudo</h3>
+                                    <div class="space-y-4 text-stone-300 mb-6">
+                                        <p>
+                                            <span class="font-bold color-metodologia">TAA (Autorregulação da Aprendizagem):</span> É a capacidade do estudante de gerenciar ativamente seus próprios pensamentos, comportamentos e emoções para atingir seus objetivos de aprendizado.
+                                        </p>
+                                        <p>
+                                            <span class="font-bold color-metodologia">Repetição Espaçada:</span> É a técnica de revisão de conteúdo em intervalos de tempo crescentes. Nossa oficina está estruturada para que as habilidades centrais sejam revisitadas e aprimoradas em encontros posteriores.
+                                        </p>
+                                        <div class="p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md">
+                                            <h4 class="font-bold color-primary mb-1 text-stone-100">⭐ Dica Bônus: Diário de Estudos</h4>
+                                            <p class="text-sm text-stone-300">Registre brevemente, ao final de cada encontro, o que aprendeu, onde errou e qual foi o prompt mais eficaz. Isso otimiza a sua Repetição Espaçada e acelera o aprendizado!</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         `;
                     }
 
                     // DISTRIBUIÇÃO DO TEMPO
                     mainContentHtml += `
-                        <div class="mt-6">
-                            <h3 class="text-lg font-semibold text-stone-100 mb-2">⏱️ Distribuição do Tempo (1h 40min)</h3>
-                            <div class="chart-container">
-                                <canvas id="chart-${index}"></canvas>
+                            <div class="mt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-2">⏱️ Distribuição do Tempo (1h 40min)</h3>
+                                <div class="chart-container">
+                                    <canvas id="chart-${index}"></canvas>
+                                </div>
+                                <!-- Os cards de atividades são renderizados aqui -->
+                                <div id="activities-cards-${index}">${getActivityCardsHTML(index)}</div>
                             </div>
-                            <!-- Os cards de atividades serão renderizados pela função showEncontro -->
-                            <div id="activities-cards-${index}">${getActivityCardsHTML(index)}</div>
-                        </div>
                     `;
 
                     // FERRAMENTAS ÚTEIS (APENAS ENCONTRO 1)
                     if (index === 0) {
                         mainContentHtml += `
-                            <div class="mt-8 border-t border-stone-700 pt-6">
-                                <h3 class="text-xl font-semibold text-stone-100 mb-4 text-center">🛠️ Ferramentas Úteis</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    
-                                    <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
-                                        <div>
-                                            <div class="flex justify-between items-start mb-1">
-                                                <h4 class="font-bold color-plano-pro flex items-center"><span class="mr-2 color-gemini-highlight">✨</span><a href="https://gemini.google.com/" target="_blank" class="hover:underline color-plano-pro">Gemini</a></h4>
-                                                <span class="pro-badge">Plano Pro</span>
+                                <div class="mt-8 border-t border-stone-700 pt-6">
+                                    <h3 class="text-xl font-semibold text-stone-100 mb-4 text-center">🛠️ Ferramentas Úteis</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        
+                                        <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
+                                            <div>
+                                                <div class="flex justify-between items-start mb-1">
+                                                    <h4 class="font-bold color-plano-pro flex items-center"><span class="mr-2 color-gemini-highlight">✨</span><a href="https://gemini.google.com/" target="_blank" class="hover:underline color-plano-pro">Gemini</a></h4>
+                                                    <span class="pro-badge">Plano Pro</span>
+                                                </div>
+                                                <p class="text-xs text-stone-400">Gratuito por 1 ano para estudantes</p>
+                                                <p class="text-sm text-stone-300 mt-2">Excelente para diálogos interativos, explorar ideias e gerar código de forma natural.</p>
                                             </div>
-                                            <p class="text-xs text-stone-400">Gratuito por 1 ano para estudantes</p>
-                                            <p class="text-sm text-stone-300 mt-2">Excelente para diálogos interativos, explorar ideias e gerar código de forma natural.</p>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
-                                        <div>
-                                            <div class="flex justify-between items-start mb-1">
-                                                <h4 class="font-bold color-plano-pro flex items-center"><span class="mr-2">📓</span><a href="https://notebooklm.google.com/" target="_blank" class="hover:underline color-plano-pro">NotebookLM</a></h4>
-                                                <span class="pro-badge">Plano Pro</span>
+                                        
+                                        <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
+                                            <div>
+                                                <div class="flex justify-between items-start mb-1">
+                                                    <h4 class="font-bold color-plano-pro flex items-center"><span class="mr-2">📓</span><a href="https://notebooklm.google.com/" target="_blank" class="hover:underline color-plano-pro">NotebookLM</a></h4>
+                                                    <span class="pro-badge">Plano Pro</span>
+                                                </div>
+                                                <p class="text-xs text-stone-400">Gratuito por 1 ano para estudantes</p>
+                                                <p class="text-sm text-stone-300 mt-2">Perfeito para analisar e 'conversar' com seus próprios documentos, como enunciados de problemas.</p>
                                             </div>
-                                            <p class="text-xs text-stone-400">Gratuito por 1 ano para estudantes</p>
-                                            <p class="text-sm text-stone-300 mt-2">Perfeito para analisar e 'conversar' com seus próprios documentos, como enunciados de problemas.</p>
                                         </div>
-                                    </div>
 
-                                     <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
-                                        <div>
-                                            <h4 class="font-bold color-plano-pro">🧠 <a href="https://chatgpt.com/" target="_blank" class="hover:underline color-plano-pro">ChatGPT</a></h4>
-                                            <p class="text-sm text-stone-300 mt-2">Oferece uma vasta base de conhecimento para codificação, explicação de conceitos e depuração.</p>
-                                        </div>
-                                    </div>
-
-                                     <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
-                                        <div>
-                                            <h4 class="font-bold color-plano-pro">🦈 <a href="https://www.deepseek.com/" target="_blank" class="hover:underline color-plano-pro">DeepSeek</a></h4>
-                                            <p class="text-sm text-stone-300 mt-2">Especializado e otimizado para maior precisão na geração e análise de código.</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
-                                        <div>
-                                            <div class="flex justify-between items-start mb-1">
-                                                <h4 class="font-bold color-plano-pro flex items-center"><span class="mr-2">🔗</span><a href="https://www.perplexity.ai/" target="_blank" class="hover:underline color-plano-pro">Perplexity</a></h4>
-                                                <span class="pro-badge">Plano Pro</span>
+                                         <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
+                                            <div>
+                                                <h4 class="font-bold color-plano-pro">🧠 <a href="https://chatgpt.com/" target="_blank" class="hover:underline color-plano-pro">ChatGPT</a></h4>
+                                                <p class="text-sm text-stone-300 mt-2">Oferece uma vasta base de conhecimento para codificação, explicação de conceitos e depuração.</p>
                                             </div>
-                                            <p class="text-xs text-stone-400">Gratuito por 1 ano para estudantes</p>
-                                            <p class="text-sm text-stone-300 mt-2">Ideal para avaliação crítica, pois fornece respostas com links diretos para as fontes.</p>
+                                        </div>
+
+                                         <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
+                                            <div>
+                                                <h4 class="font-bold color-plano-pro">🦈 <a href="https://www.deepseek.com/" target="_blank" class="hover:underline color-plano-pro">DeepSeek</a></h4>
+                                                <p class="text-sm text-stone-300 mt-2">Especializado e otimizado para maior precisão na geração e análise de código.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
+                                            <div>
+                                                <div class="flex justify-between items-start mb-1">
+                                                    <h4 class="font-bold color-plano-pro flex items-center"><span class="mr-2">🔗</span><a href="https://www.perplexity.ai/" target="_blank" class="hover:underline color-plano-pro">Perplexity</a></h4>
+                                                    <span class="pro-badge">Plano Pro</span>
+                                                </div>
+                                                <p class="text-xs text-stone-400">Gratuito por 1 ano para estudantes</p>
+                                                <p class="text-sm text-stone-300 mt-2">Ideal para avaliação crítica, pois fornece respostas com links diretos para as fontes.</p>
+                                            </div>
+                                        </div>
+                                        
+                                         <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
+                                            <div>
+                                                <h4 class="font-bold color-plano-pro">💻 <a href="https://www.phind.com/" target="_blank" class="hover:underline color-plano-pro">Phind</a></h4>
+                                                <p class="text-sm text-stone-300 mt-2">Motor de busca de IA focado em desenvolvedores. Excelente para dúvidas técnicas.</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    
-                                     <div class="bg-stone-700/60 p-4 rounded-lg border-2 shadow-sm border-tools-card-general flex flex-col justify-between">
-                                        <div>
-                                            <h4 class="font-bold color-plano-pro">💻 <a href="https://www.phind.com/" target="_blank" class="hover:underline color-plano-pro">Phind</a></h4>
-                                            <p class="text-sm text-stone-300 mt-2">Motor de busca de IA focado em desenvolvedores. Excelente para dúvidas técnicas.</p>
-                                        </div>
-                                    </div>
+                                    <p class="text-center color-plano-pro text-sm mt-6 font-semibold">
+                                        Não se prenda a uma só IAG, use a especialidade de cada ferramenta de forma estratégica!
+                                    </p>
                                 </div>
-                                <p class="text-center color-plano-pro text-sm mt-6 font-semibold">
-                                    Não se prenda a uma só IAG, use a especialidade de cada ferramenta de forma estratégica!
-                                </p>
-                            </div>
                         `;
                         
                         // Adiciona o bloco do documento anexado
                         mainContentHtml += `
-                            <div class="mt-8 border-t border-stone-700 pt-6 text-center">
-                                <a href="https://docs.google.com/document/d/1YDn9hM4r7eHM3BmGCpNs_b3N8RSPMdBIDwktTQj3CjY/edit?usp=sharing" target="_blank" class="inline-block px-6 py-3 text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #837492;">
-                                    <span class="mr-2">📄</span> Teste de Nivelamento Inicial
-                                </a>
-                            </div>
+                                <div class="mt-8 border-t border-stone-700 pt-6 text-center">
+                                    <a href="https://docs.google.com/document/d/1YDn9hM4r7eHM3BmGCpNs_b3N8RSPMdBIDwktTQj3CjY/edit?usp=sharing" target="_blank" class="inline-block px-6 py-3 text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #837492;">
+                                        <span class="mr-2">📄</span> Teste de Nivelamento Inicial
+                                    </a>
+                                </div>
                         `;
                     }
                 }
@@ -654,11 +729,6 @@
                 // Conteúdo extra dos demais encontros e da aba Extras
                 mainContentHtml += encontro.extraContent || '';
                 
-                // Contêiner para o botão de liberação (comum a todos os encontros)
-                if (!isExtra) {
-                    mainContentHtml += `<div class="release-container"></div>`;
-                }
-
                 contentDiv.innerHTML = mainContentHtml;
                 mainContent.appendChild(contentDiv);
             });
