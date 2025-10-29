@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Chosen Palette: Dark Harmony V12 (Stone-950 Background, Cyan-400 Accent, Fuchsia-400 Secondary, Zinc-300 Details) -->
     <!-- Application Structure Plan: A single-page application using a top stepper navigation to switch between the 6 course sessions ('Encontros') and an 'Extras' tab. This focused, step-by-step view is more intuitive for a curriculum than a scrolling page. Each session's content is displayed in a card, featuring objectives and a Chart.js horizontal stacked bar chart to visually represent the time allocation for activities, making the schedule easy to grasp. The primary user flow is clicking a step to view the corresponding session's details. -->
-    <!-- Visualization & Content Choices: Report Info (Session Schedule) -> Goal (Inform/Compare time allocation) -> Viz (Chart.js Horizontal Stacked Bar) -> Interaction (Hover for tooltip with activity name/duration) -> Justification (More engaging and quicker to quicker to read than a text list); Report Info (Course Structure) -> Goal (Organize/Navigate) -> Presentation (HTML/CSS Stepper) -> Interaction (Click to show session content) -> Justification (Provides clear progress indication and focused view). NO SVG/Mermaid used. -->
+    <!-- Visualization & Content Choices: Report Info (Session Schedule) -> Goal (Inform/Compare time allocation) -> Viz (Chart.js Horizontal Stacked Bar) -> Interaction (Hover for tooltip with activity name/duration) -> Justification (More engaging and quicker to read than a text list); Report Info (Course Structure) -> Goal (Organize/Navigate) -> Presentation (HTML/CSS Stepper) -> Interaction (Click to show session content) -> Justification (Provides clear progress indication and focused view). NO SVG/Mermaid used. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -71,7 +71,7 @@
             font-weight: 600;
             border-color: #837492;
         }
-        /* Classe para botões ocultos - não mais utilizada para travar, mas mantida caso necessária */
+        /* Classe para botões ocultos - para "travar" o acesso */
         .stepper-btn.hidden-access {
             opacity: 0.3;
             pointer-events: none;
@@ -122,10 +122,12 @@
 
         <nav class="mb-8">
             <div class="flex flex-wrap justify-center gap-2 md:gap-4" id="stepper-nav">
+                <!-- Botões do Stepper serão injetados aqui pelo JS -->
             </div>
         </nav>
 
         <main id="main-content">
+            <!-- Conteúdo dos Encontros será injetado aqui pelo JS -->
         </main>
 
     </div>
@@ -201,82 +203,82 @@
                     { label: "Dúvidas e Perguntas (30 min)", duration: 30, icon: "❓" }
                 ],
                 extraContent: `
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🚀 Exemplo Prático</h3>
-                            <div class="p-4 bg-stone-700/60 rounded-lg border-2 border-tools-card-general">
-                                <p class="text-stone-300">Você é um Engenheiro de Computação atuando como assistente do Gerente do Mercado Paraná. Sua tarefa é desenvolver o módulo principal de verificação de descontos para um novo Terminal de Consulta Interativo. O cliente consultará o código de barras sozinho. Seu sistema deve aplicar um desconto de 15% se o produto estiver em 'promoção' ou 'vencimento_proximo'.</p>
-                            </div>
-                        </div>
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                            <ul class="space-y-4 text-stone-300">
-                                <li>
-                                    <span class="font-bold color-metodologia">Planejamento:</span> Crie um sistema para gerenciar um cadastro de alunos em linguagem C.
-                                </li>
-                                <li>
-                                    <span class="font-bold color-metodologia">Estudo com IA:</span> Iniciar uma conversa interativa com a IAG. O objetivo é criar prompts para esclarecer o problema, perguntando sobre: contexto, exemplos de entradas/saídas e possíveis casos extremos a serem considerados.
-                                </li>
-                                <li>
-                                    <span class="font-bold color-metodologia">Reflexão:</span> Comparar o enunciado original com a versão refinada após a conversa com a IAG. Discutir quais tipos de prompts geraram as respostas mais úteis e como essa clareza inicial impacta a chance de sucesso na codificação.
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                            <h3 class="text-lg font-semibold text-stone-100 mb-3">📚 Referências</h3>
-                            <ul class="list-disc list-inside space-y-3 text-stone-300 text-sm">
-                                <li>
-                                    <strong class="color-metodologia">Google for Developers - Introduction to prompt design</strong><br>
-                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> Clareza e "Few-shot prompting" (fornecer exemplos).</span><br>
-                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://developers.google.com/machine-learning/resources/prompt-engineering" target="_blank" class="text-stone-300 hover:underline break-all">https://developers.google.com/machine-learning/resources/prompt-engineering</a>
-                                </li>
-                                <li>
-                                    <strong class="color-metodologia">Google Cloud - Design de prompts de texto</strong><br>
-                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> Atribuição de Persona.</span><br>
-                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://cloud.google.com/vertex-ai/docs/generative-ai/learn/prompt-design" target="_blank" class="text-stone-300 hover:underline break-all">https://cloud.google.com/vertex-ai/docs/generative-ai/learn/prompt-design</a>
-                                </li>
-                                <li>
-                                    <strong class="color-metodologia">OpenAI Documentation - Prompt engineering (Instruções Claras)</strong><br>
-                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> A importância de instruções claras.</span><br>
-                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://platform.openai.com/docs/guides/prompt-engineering/strategy-write-clear-instructions" target="_blank" class="text-stone-300 hover:underline break-all">https://platform.openai.com/docs/guides/prompt-engineering/strategy-write-clear-instructions</a>
-                                </li>
-                                <li>
-                                    <strong class="color-metodologia">OpenAI Documentation - Prompt engineering (Texto de Referência)</strong><br>
-                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> Fornecer texto de referência.</span><br>
-                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://platform.openai.com/docs/guides/prompt-engineering/strategy-provide-reference-text" target="_blank" class="text-stone-300 hover:underline break-all">https://platform.openai.com/docs/guides/prompt-engineering/strategy-provide-reference-text</a>
-                                </li>
-                                <li>
-                                    <strong class="color-metodologia">Anthropic Documentation - Introduction to prompting</strong><br>
-                                    <span class="text-stone-400"><strong>Conceito-chave:</strong> Clareza, especificidade e o uso de exemplos.</span><br>
-                                    <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://docs.anthropic.com/claude/docs/introduction-to-prompting" target="_blank" class="text-stone-300 hover:underline break-all">https://docs.anthropic.com/claude/docs/introduction-to-prompting</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                            <div class="relative p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md">
-                                <span class="absolute top-3 right-3 bg-stone-700 text-stone-300 text-xs font-semibold px-2 py-0.5 rounded-full uppercase">Opcional</span>
-                                <h4 class="font-bold text-stone-100 mb-2 text-center">🏆 Missão Bônus</h4>
-                                <p class="text-sm text-stone-300 text-left mb-4">Você foi contratado como desenvolvedor(a) júnior por uma clínica e sua primeira tarefa é criar um protótipo de um sistema para o gerenciamento de pacientes. O sistema deve ser desenvolvido em linguagem C e rodar em um console (terminal). A principal diretriz do seu gestor é que você utilize Ferramentas de Inteligência Artificial Generativa (como Gemini, ChatGPT, etc.) como suas assistentes de programação para otimizar seu tempo e aprender com as melhores práticas.</p>
-                                <p class="text-sm text-stone-300 text-left mb-4">O objetivo desta tarefa não é apenas entregar um código funcional, mas demonstrar sua habilidade de colaborar com uma IAG para resolver um problema. Queremos ver como você usa a IA para aprender, depurar e otimizar.</p>
-                                <h5 class="font-semibold text-stone-200 text-left text-sm mb-2">Entregáveis:</h5>
-                                <ul class="list-disc list-inside text-sm text-stone-300 text-left space-y-1">
-                                    <li><span class="font-semibold">Código-Fonte:</span> Código (.c), devidamente comentado.</li>
-                                    <li><span class="font-semibold">Histórico de Conversa:</span> Um arquivo PDF ou link compartilhável contendo todo o histórico de prompts e respostas com a(s) IAG(s) que você utilizou.</li>
-                                </ul>
-                                <h5 class="font-semibold text-stone-200 text-left text-sm mb-2 mt-4">Instruções de Entrega:</h5>
-                                <p class="text-sm text-stone-300 text-left mb-4">Para entregar a atividade, crie uma pasta com seu nome completo. Dentro dela, coloque o código (.c) e o histórico da conversa (PDF). Depois, compacte essa pasta em um arquivo .zip e a envie no Drive.</p>
-                                <div class="mt-4 pt-3 border-t border-stone-500/50 text-center">
-                                    <p class="text-sm font-semibold text-stone-100 mb-4">
-                                        <span class="mr-2">🎁</span> Recompensa: +2 horas complementares
-                                    </p>
-                                    <a href="https://drive.google.com/drive/folders/1IuIiothQSaw5_66YSWYL_LnysFIQtmbs?usp=sharing" target="_blank" class="inline-block px-5 py-2 text-sm text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #685C74;">
-                                        <span class="mr-2">🚀</span> Entregar Missão
-                                    </a>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">🚀 Exemplo Prático</h3>
+                                <div class="p-4 bg-stone-700/60 rounded-lg border-2 border-tools-card-general">
+                                    <p class="text-stone-300">Você é um Engenheiro de Computação atuando como assistente do Gerente do Mercado Paraná. Sua tarefa é desenvolver o módulo principal de verificação de descontos para um novo Terminal de Consulta Interativo. O cliente consultará o código de barras sozinho. Seu sistema deve aplicar um desconto de 15% se o produto estiver em 'promoção' ou 'vencimento_proximo'.</p>
                                 </div>
                             </div>
-                        </div>
-                        <p class="text-center color-plano-pro text-sm mt-6 font-semibold">
-                            Não é mágica, é clareza! Lembre-se, prompt bem feito = IA afiada.
-                        </p>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                                <ul class="space-y-4 text-stone-300">
+                                    <li>
+                                        <span class="font-bold color-metodologia">Planejamento:</span> Crie um sistema para gerenciar um cadastro de alunos em linguagem C.
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-metodologia">Estudo com IA:</span> Iniciar uma conversa interativa com a IAG. O objetivo é criar prompts para esclarecer o problema, perguntando sobre: contexto, exemplos de entradas/saídas e possíveis casos extremos a serem considerados.
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-metodologia">Reflexão:</span> Comparar o enunciado original com a versão refinada após a conversa com a IAG. Discutir quais tipos de prompts geraram as respostas mais úteis e como essa clareza inicial impacta a chance de sucesso na codificação.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">📚 Referências</h3>
+                                <ul class="list-disc list-inside space-y-3 text-stone-300 text-sm">
+                                    <li>
+                                        <strong class="color-metodologia">Google for Developers - Introduction to prompt design</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Clareza e "Few-shot prompting" (fornecer exemplos).</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://developers.google.com/machine-learning/resources/prompt-engineering" target="_blank" class="text-stone-300 hover:underline break-all">https://developers.google.com/machine-learning/resources/prompt-engineering</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">Google Cloud - Design de prompts de texto</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Atribuição de Persona.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://cloud.google.com/vertex-ai/docs/generative-ai/learn/prompt-design" target="_blank" class="text-stone-300 hover:underline break-all">https://cloud.google.com/vertex-ai/docs/generative-ai/learn/prompt-design</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">OpenAI Documentation - Prompt engineering (Instruções Claras)</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> A importância de instruções claras.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://platform.openai.com/docs/guides/prompt-engineering/strategy-write-clear-instructions" target="_blank" class="text-stone-300 hover:underline break-all">https://platform.openai.com/docs/guides/prompt-engineering/strategy-write-clear-instructions</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">OpenAI Documentation - Prompt engineering (Texto de Referência)</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Fornecer texto de referência.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://platform.openai.com/docs/guides/prompt-engineering/strategy-provide-reference-text" target="_blank" class="text-stone-300 hover:underline break-all">https://platform.openai.com/docs/guides/prompt-engineering/strategy-provide-reference-text</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">Anthropic Documentation - Introduction to prompting</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Clareza, especificidade e o uso de exemplos.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://docs.anthropic.com/claude/docs/introduction-to-prompting" target="_blank" class="text-stone-300 hover:underline break-all">https://docs.anthropic.com/claude/docs/introduction-to-prompting</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <div class="relative p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md">
+                                    <span class="absolute top-3 right-3 bg-stone-700 text-stone-300 text-xs font-semibold px-2 py-0.5 rounded-full uppercase">Opcional</span>
+                                    <h4 class="font-bold text-stone-100 mb-2 text-center">🏆 Missão Bônus</h4>
+                                    <p class="text-sm text-stone-300 text-left mb-4">Você foi contratado como desenvolvedor(a) júnior por uma clínica e sua primeira tarefa é criar um protótipo de um sistema para o gerenciamento de pacientes. O sistema deve ser desenvolvido em linguagem C e rodar em um console (terminal). A principal diretriz do seu gestor é que você utilize Ferramentas de Inteligência Artificial Generativa (como Gemini, ChatGPT, etc.) como suas assistentes de programação para otimizar seu tempo e aprender com as melhores práticas.</p>
+                                    <p class="text-sm text-stone-300 text-left mb-4">O objetivo desta tarefa não é apenas entregar um código funcional, mas demonstrar sua habilidade de colaborar com uma IAG para resolver um problema. Queremos ver como você usa a IA para aprender, depurar e otimizar.</p>
+                                    <h5 class="font-semibold text-stone-200 text-left text-sm mb-2">Entregáveis:</h5>
+                                    <ul class="list-disc list-inside text-sm text-stone-300 text-left space-y-1">
+                                        <li><span class="font-semibold">Código-Fonte:</span> Código (.c), devidamente comentado.</li>
+                                        <li><span class="font-semibold">Histórico de Conversa:</span> Um arquivo PDF ou link compartilhável contendo todo o histórico de prompts e respostas com a(s) IAG(s) que você utilizou.</li>
+                                    </ul>
+                                    <h5 class="font-semibold text-stone-200 text-left text-sm mb-2 mt-4">Instruções de Entrega:</h5>
+                                    <p class="text-sm text-stone-300 text-left mb-4">Para entregar a atividade, crie uma pasta com seu nome completo. Dentro dela, coloque o código (.c) e o histórico da conversa (PDF). Depois, compacte essa pasta em um arquivo .zip e a envie no Drive.</p>
+                                    <div class="mt-4 pt-3 border-t border-stone-500/50 text-center">
+                                        <p class="text-sm font-semibold text-stone-100 mb-4">
+                                            <span class="mr-2">🎁</span> Recompensa: +2 horas complementares
+                                        </p>
+                                        <a href="https://drive.google.com/drive/folders/1IuIiothQSaw5_66YSWYL_LnysFIQtmbs?usp=sharing" target="_blank" class="inline-block px-5 py-2 text-sm text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #685C74;">
+                                            <span class="mr-2">🚀</span> Entregar Missão
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-center color-plano-pro text-sm mt-6 font-semibold">
+                                Não é mágica, é clareza! Lembre-se, prompt bem feito = IA afiada.
+                            </p>
                 `
             },
             {
@@ -291,26 +293,71 @@
                     { label: "Dúvidas e Perguntas (30 min)", duration: 30, icon: "❓" }
                 ],
                 extraContent: `
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                            <ul class="space-y-4 text-stone-300">
-                                <li>
-                                    <span class="font-bold color-primary">Planejamento:</span> Delinear um plano de como a solução deve funcionar, quais funções serão necessárias e quais testes poderiam validá-la.
-                                </li>
-                                <li>
-                                    <span class="font-bold color-primary">Estudo com IA:</span> 
-                                    <ul class="list-disc ml-6 mt-1 space-y-1">
-                                        <li>Pedir à IAG que gere o código para o problema.</li>
-                                        <li>Pedir à IAG para explicar partes específicas do código.</li>
-                                        <li>Pedir para a IAG gerar um conjunto de casos de teste.</li>
-                                        <li>Executar o código com os testes para verificar o funcionamento.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <span class="font-bold color-primary">Reflexão:</span> Debater: O código estava correto na primeira tentativa? A explicação da IAG ajudou a entendê-lo melhor? Essa atividade reforça a necessidade de monitorar a compreensão e inspecionar e adaptar o código.
-                                </li>
-                            </ul>
-                        </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                                <ul class="space-y-4 text-stone-300">
+                                    <li>
+                                        <span class="font-bold color-metodologia">Planejamento:</span> Delinear um plano de como a solution deve funcionar, quais funções serão necessárias e quais testes poderiam validá-la.
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-metodologia">Estudo com IA:</span> 
+                                        <ul class="list-disc ml-6 mt-1 space-y-1">
+                                            <li>Pedir à IAG que gere o código para o problema.</li>
+                                            <li>Pedir à IAG para explicar partes específicas do código.</li>
+                                            <li>Pedir para a IAG gerar um conjunto de casos de teste.</li>
+                                            <li>Executar o código com os testes para verificar o funcionamento.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-metodologia">Reflexão:</span> Debater: O código estava correto na primeira tentativa? A explicação da IAG ajudou a entendê-lo melhor? Essa atividade reforça a necessidade de monitorar a compreensão e inspecionar e adaptar o código.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">📚 Referências</h3>
+                                <ul class="list-disc list-inside space-y-3 text-stone-300 text-sm">
+                                    <li>
+                                        <strong class="color-metodologia">GitHub - Spec-driven development with AI (Desenvolvimento guiado por especificações com IA)</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> O GitHub (criador do Copilot) promove uma abordagem onde o humano define a "especificação" (o contrato) e o papel do humano é "verificar" e "criticar" o que a IA gerou em relação àquela especificação.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/" target="_blank" class="text-stone-300 hover:underline break-all">https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">Sonar - AI Test Generation: A Dev's Guide Without Shooting Yourself in the Foot</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Este artigo (de uma empresa líder em qualidade de código) adverte sobre testes gerados por IA que "Parecem Certos, Funcionam Errado" ("Looks Right, Works Wrong") e que só cobrem o "caminho feliz".</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://medium.com/sonar-developer-blog/ai-test-generation-a-devs-guide-without-shooting-yourself-in-the-foot-5d9dae0a244f" target="_blank" class="text-stone-300 hover:underline break-all">https://medium.com/sonar-developer-blog/ai-test-generation-a-devs-guide-without-shooting-yourself-in-the-foot-5d9dae0a244f</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">GitGuardian - GitHub Copilot Security and Privacy Concerns (Preocupações de Segurança e Privacidade do GitHub Copilot)</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Menciona estudos que mostram que repositórios usando Copilot podem vazar mais segredos (chaves de API, senhas) no código, pois a IA foi treinada em código público que já tinha esse mau hábito.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://blog.gitguardian.com/github-copilot-security-and-privacy/" target="_blank" class="text-stone-300 hover:underline break-all">https://blog.gitguardian.com/github-copilot-security-and-privacy/</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">The Hidden Dangers of AI Coding (Os Perigos Ocultos da Codificação com IA)</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Lista CWEs (a lista oficial de tipos de bugs de segurança) que são comumente gerados por IAs, como injeção de SQL, injeção de comando e valores insuficientemente aleatórios.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://chandreshraju.medium.com/the-hidden-dangers-of-ai-coding-why-your-next-software-project-could-be-a-security-nightmare-05770eefc868" target="_blank" class="text-stone-300 hover:underline break-all">https://chandreshraju.medium.com/the-hidden-dangers-of-ai-coding-why-your-next-software-project-could-be-a-security-nightmare-05770eefc868</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">Google - Securely deploying AI on Google Cloud (Implantando IA com segurança no Google Cloud)</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> O framework SAIF (Secure AI Framework) do Google enfatiza a necessidade de "guardrails" (barreiras de proteção) e controles humanos, pois a IA não tem o contexto do seu sistema.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://cloud.google.com/security/securing-ai" target="_blank" class="text-stone-300 hover:underline break-all">https://cloud.google.com/security/securing-ai</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">GitHub Docs - Improving code readability and maintainability (Melhorando a legibilidade e manutenção do código)</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> O próprio GitHub tem um guia sobre como usar o Copilot para refatorar código, incluindo "Refatorar para otimização", admitindo que o primeiro rascunho (da IA ou humano) pode ser melhorado.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://docs.github.com/copilot/copilot-chat-cookbook/refactoring-code/improving-code-readability-and-maintainability" target="_blank" class="text-stone-300 hover:underline break-all">https://docs.github.com/copilot/copilot-chat-cookbook/refactoring-code/improving-code-readability-and-maintainability</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">GoCodeo - Comparing AI Code Generation Tools on Maintainability and Readability (Comparando Ferramentas de Geração de Código por IA em Manutenção e Legibilidade)</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Adverte contra "soluções de caixa preta" ("black box solutions") da IA, que são "funcionais, mas frágeis ou opacas", e cuja produtividade inicial desaparece se a equipe precisar reescrevê-las.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://www.gocodeo.com/post/comparing-ai-code-generation-tools-on-maintainability-and-readability" target="_blank" class="text-stone-300 hover:underline break-all">https://www.gocodeo.com/post/comparing-ai-code-generation-tools-on-maintainability-and-readability</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">Black Duck - Generative AI risks in software development (Riscos da IA Generativa no desenvolvimento de software)</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> A Black Duck (empresa de análise de licenças) alerta que a IA pode "copiar/colar pequenos pedaços de código de terceiros" e "remover o licenciamento" dos snippets, criando um risco legal.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://www.blackduck.com/blog/generative-ai-risks-in-software.html" target="_blank" class="text-stone-300 hover:underline break-all">https://www.blackduck.com/blog/generative-ai-risks-in-software.html</a>
+                                    </li>
+                                </ul>
+                            </div>
                 `
             },
             {
@@ -325,46 +372,46 @@
                     { label: "Dúvidas e Perguntas (30 min)", duration: 30, icon: "❓" }
                 ],
                 extraContent: `
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                            <ul class="space-y-4 text-stone-300">
-                                <li>
-                                    <span class="font-bold color-primary">Planejamento:</span> Receber um enunciado de problema intencionalmente vago. A tarefa é listar quais informações estão faltando para que o problema possa ser resolvido.
-                                </li>
-                                <li>
-                                    <span class="font-bold color-primary">Estudo com IA:</span> Solicitar à IAG o código para cada componente separadamente. A principal tarefa do aluno é integrar essas peças de código, garantindo que funcionem juntas corretamente.
-                                </li>
-                                <li>
-                                    <span class="font-bold color-primary">Reflexão:</span> Discutir: Quais foram os desafios ao integrar os códigos gerados? As partes geradas pela IAG eram compatíveis? Essa tarefa força o aluno a manter o monitoramento do processo global.
-                                </li>
-                            </ul>
-                        </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                                <ul class="space-y-4 text-stone-300">
+                                    <li>
+                                        <span class="font-bold color-primary">Planejamento:</span> Receber um enunciado de problema intencionalmente vago. A tarefa é listar quais informações estão faltando para que o problema possa ser resolvido.
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-primary">Estudo com IA:</span> Solicitar à IAG o código para cada componente separadamente. A principal tarefa do aluno é integrar essas peças de código, garantindo que funcionem juntas corretamente.
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-primary">Reflexão:</span> Discutir: Quais foram os desafios ao integrar os códigos gerados? As partes geradas pela IAG eram compatíveis? Essa tarefa força o aluno a manter o monitoramento do processo global.
+                                    </li>
+                                </ul>
+                            </div>
                 `
             },
             {
                 title: "Ciclo de Desenvolvimento e Refatoração",
                 icon: "🔄",
                 subtitle: "Do rascunho à otimização com a IA como parceira.",
-                objective: "Sintetizar as habilidades desenvolvidas, vivenciando um ciclo de desenvolvimento completo: resolver um problema e, em seguida, aprimorar a própria solução, utilizando a IAG como parceira em ambas as fases.",
+                objective: "Sintetizar as habilidades desenvolvidas, vivenciando um ciclo de desenvolvimento completo: resolver um problema e, em seguida, aprimorar a própria solution, utilizando a IAG como parceira em ambas as fases.",
                 activities: [
                     { label: "Fase 1: Resolução (40 min)", duration: 40, icon: "🚀" },
                     { label: "Fase 2: Refatoração (30 min)", duration: 30, icon: "⚙️" },
                     { label: "Dúvidas e Perguntas (30 min)", duration: 30, icon: "❓" }
                 ],
                 extraContent: `
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                            <p class="text-stone-300 mb-4 font-bold color-primary">Fase 1: Resolução do Problema</p>
-                            <ul class="space-y-2 text-stone-300 mb-4">
-                                <li><span class="font-bold color-primary">Planejamento:</span> Escolher um problema desafiador e definir um plano de ataque inicial.</li>
-                                <li><span class="font-bold color-primary">Estudo com IA:</span> Interagir livremente com a IAG para gerar ideias, depurar erros ou escrever trechos de código, buscando uma primeira versão funcional.</li>
-                            </ul>
-                            <p class="text-stone-300 mb-4 font-bold color-primary">Fase 2: Refatoração e Otimização</p>
-                             <ul class="space-y-2 text-stone-300">
-                                <li><span class="font-bold color-primary">Análise Crítica:</span> Analisar o código recém-criado, levantando hipóteses sobre pontos de melhoria (eficiência, legibilidade).</li>
-                                <li><span class="font-bold color-primary">Estudo com IA:</span> Apresentar o próprio código à IAG e fazer perguntas focadas em aprimoramento ("Como posso refatorar? É mais eficiente?"). O aluno implementa as sugestões pertinentes.</li>
-                            </ul>
-                        </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                                <p class="text-stone-300 mb-4 font-bold color-primary">Fase 1: Resolução do Problema</p>
+                                <ul class="space-y-2 text-stone-300 mb-4">
+                                    <li><span class="font-bold color-primary">Planejamento:</span> Escolher um problema desafiador e definir um plano de ataque inicial.</li>
+                                    <li><span class="font-bold color-primary">Estudo com IA:</span> Interagir livremente com a IAG para gerar ideias, depurar erros ou escrever trechos de código, buscando uma primeira versão funcional.</li>
+                                </ul>
+                                <p class="text-stone-300 mb-4 font-bold color-primary">Fase 2: Refatoração e Otimização</p>
+                                 <ul class="space-y-2 text-stone-300">
+                                    <li><span class="font-bold color-primary">Análise Crítica:</span> Analisar o código recém-criado, levantando hipóteses sobre pontos de melhoria (eficiência, legibilidade).</li>
+                                    <li><span class="font-bold color-primary">Estudo com IA:</span> Apresentar o próprio código à IAG e fazer perguntas focadas em aprimoramento ("Como posso refatorar? É mais eficiente?"). O aluno implementa as sugestões pertinentes.</li>
+                                </ul>
+                            </div>
                 `
             },
             {
@@ -377,24 +424,24 @@
                     { label: "Ensaio Reflexivo (50 min)", duration: 50, icon: "✍️" }
                 ],
                 extraContent: `
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                            <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
-                            <p class="text-stone-300 mb-4 font-bold color-primary">Ensaio Reflexivo (Atividade Principal)</p>
-                            <ul class="space-y-4 text-stone-300">
-                                <li>
-                                    <span class="font-bold color-primary">Objetivo:</span> Consolidar o processo, analisando o diálogo com a IA e a jornada de aprendizado.
-                                </li>
-                                <li>
-                                    <span class="font-bold color-primary">Pontos a Abordar:</span> 
-                                    <ul class="list-disc ml-6 mt-1 space-y-1">
-                                        <li>Planejamento e Adaptação: Qual foi o plano inicial e como ele mudou com a IA?</li>
-                                        <li>Monitoramento e Correção: Em que momento percebeu um erro e como corrigiu o curso (com ou sem a ajuda da IA)?</li>
-                                        <li>Avaliação Crítica: A IAG deu respostas erradas? As sugestões de refatoração melhoraram o código?</li>
-                                        <li>Autoavaliação Geral: Quais estratégias de TAA eu usei e como meu papel mudou de 'criador' para 'revisor/otimizador'?</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
+                                <p class="text-stone-300 mb-4 font-bold color-primary">Ensaio Reflexivo (Atividade Principal)</p>
+                                <ul class="space-y-4 text-stone-300">
+                                    <li>
+                                        <span class="font-bold color-primary">Objetivo:</span> Consolidar o processo, analisando o diálogo com a IA e a jornada de aprendizado.
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-primary">Pontos a Abordar:</span> 
+                                        <ul class="list-disc ml-6 mt-1 space-y-1">
+                                            <li>Planejamento e Adaptação: Qual foi o plano inicial e como ele mudou com a IA?</li>
+                                            <li>Monitoramento e Correção: Em que momento percebeu um erro e como corrigiu o curso (com ou sem a ajuda da IA)?</li>
+                                            <li>Avaliação Crítica: A IAG deu respostas erradas? As sugestões de refatoração melhoraram o código?</li>
+                                            <li>Autoavaliação Geral: Quais estratégias de TAA eu usei e como meu papel mudou de 'criador' para 'revisor/otimizador'?</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                 `
             },
             {
@@ -404,14 +451,14 @@
                 objective: "", 
                 activities: [], 
                 extraContent: `
-                        <div class="mt-6 p-8 bg-stone-700/70 rounded-lg text-center border-2 border-materiais-apoio">
-                            <h3 class="text-2xl font-semibold color-extras-titulo mb-2">Materiais de Apoio</h3>
-                            <p class="mt-2 text-stone-300 mb-6">Acesse aqui os PDFs das diciplinas de Fundamentos de Programação 1 e Fundamentos de Programação 2, disponibilizados pelo Professor Muriel Godoi.</p>
-                            <a href="https://drive.google.com/file/d/155DsSSHB-HWsi85Ytytf9GfzS6mIxIMz/view?usp=drive_link" target="_blank" class="inline-block px-6 py-3 text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #837492;">
-                                <span class="mr-2">📂</span> PDF's: Fundamentos de Programação
-                            </a>
-                            <p class="mt-4 text-xs text-stone-400">© Professor Muriel Godoi. Material fornecido e todos os direitos reservados.</p>
-                        </div>
+                            <div class="mt-6 p-8 bg-stone-700/70 rounded-lg text-center border-2 border-materiais-apoio">
+                                <h3 class="text-2xl font-semibold color-extras-titulo mb-2">Materiais de Apoio</h3>
+                                <p class="mt-2 text-stone-300 mb-6">Acesse aqui os PDFs das diciplinas de Fundamentos de Programação 1 e Fundamentos de Programação 2, disponibilizados pelo Professor Muriel Godoi.</p>
+                                <a href="https://drive.google.com/file/d/155DsSSHB-HWsi85Ytytf9GfzS6mIxIMz/view?usp=drive_link" target="_blank" class="inline-block px-6 py-3 text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #837492;">
+                                    <span class="mr-2">📂</span> PDF's: Fundamentos de Programação
+                                </a>
+                                <p class="mt-4 text-xs text-stone-400">© Professor Muriel Godoi. Material fornecido e todos os direitos reservados.</p>
+                            </div>
                `
             }
         ];
@@ -420,7 +467,12 @@
         let chartInstance = null; 
 
         // --- Funções Auxiliares ---
-        function renderActivityCards(activities) {
+
+        /**
+         * CORREÇÃO: A função agora aceita 'encontroIndex' para aplicar a lógica de cor corretamente,
+         * em vez de depender da variável global 'currentEncontroIndex'.
+         */
+        function renderActivityCards(activities, encontroIndex) {
             if (!activities || activities.length === 0) {
                 return '';
             }
@@ -429,8 +481,8 @@
             activities.forEach((activity, index) => {
                 let borderClass = 'border-secondary'; 
                 
-                // Aplica cores personalizadas para o Encontro 1 e 2
-                if (currentEncontroIndex === 0 || currentEncontroIndex === 1) {
+                // Aplica cores personalizadas para o Encontro 1, 2 e 3 (índices 0, 1 e 2)
+                if (encontroIndex === 0 || encontroIndex === 1 || encontroIndex === 2) {
                     if (index === 0) borderClass = 'border-color-e1-0';
                     else if (index === 1) borderClass = 'border-color-e1-1';
                     else if (index === 2) borderClass = 'border-color-e1-2';
@@ -452,7 +504,7 @@
             return html;
         }
 
-        let currentEncontroIndex = 0;
+        let currentEncontroIndex = 0; // Mantém o rastreio do índice atual
 
         function renderChart(encontroIndex) {
             const canvas = document.getElementById(`chart-${encontroIndex}`);
@@ -460,9 +512,11 @@
 
             const data = courseData[encontroIndex];
             
+            // Se não houver atividades (como na aba "Extras"), esconde o canvas e destrói o gráfico antigo.
             if (!data.activities || data.activities.length === 0) {
                 if (chartInstance) {
                     chartInstance.destroy();
+                    chartInstance = null;
                 }
                 canvas.style.display = 'none'; 
                 return;
@@ -472,6 +526,7 @@
 
             const ctx = canvas.getContext('2d');
             
+            // Paleta de cores padrão
             let backgroundColors = [
                 'rgba(34, 211, 238, 0.9)', 
                 'rgba(232, 121, 249, 0.9)',
@@ -485,8 +540,9 @@
                 'rgba(255, 255, 255, 1)'
             ];
 
-            // Cores personalizadas para o gráfico do Encontro 1 e 2
-            if (encontroIndex === 0 || encontroIndex === 1) {
+            // Cores personalizadas para o gráfico do Encontro 1, 2 e 3 (índices 0, 1 e 2)
+            // Esta lógica estava correta pois já usava 'encontroIndex'
+            if (encontroIndex === 0 || encontroIndex === 1 || encontroIndex === 2) {
                 backgroundColors = [
                     'rgba(104, 92, 116, 0.9)',
                     'rgba(131, 116, 146, 0.9)',
@@ -506,6 +562,7 @@
             const coresDoGrafico = backgroundColors.slice(0, data.activities.length);
             const coresDoGraficoHover = hoverBackgroundColors.slice(0, data.activities.length);
 
+            // Destrói a instância anterior do gráfico para evitar sobreposição
             if (chartInstance) {
                 chartInstance.destroy();
             }
@@ -527,7 +584,7 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                        x: { stacked: true, display: false, max: 100 },
+                        x: { stacked: true, display: false, max: 100 }, // Max 100 minutos
                         y: { stacked: true, display: false }
                     },
                     plugins: {
@@ -546,29 +603,37 @@
             });
         }
 
+        /**
+         * CORREÇÃO: A função agora passa o 'index' para 'renderActivityCards'.
+         */
         function getActivityCardsHTML(index) {
-            return renderActivityCards(courseData[index].activities);
+            return renderActivityCards(courseData[index].activities, index);
         }
         
         function showEncontro(index) {
-            currentEncontroIndex = index; 
+            currentEncontroIndex = index; // Atualiza o índice global
             
+            // Esconde todo o conteúdo
             document.querySelectorAll('.encontro-content').forEach(content => {
                 content.classList.remove('active');
             });
 
+            // Mostra o conteúdo do índice clicado
             const activeContent = document.getElementById(`encontro-${index}`);
             if (activeContent) {
                 activeContent.classList.add('active');
             }
 
+            // Remove a classe 'active' de todos os botões
             document.querySelectorAll('.stepper-btn').forEach(btn => btn.classList.remove('active'));
             
+            // Adiciona a classe 'active' ao botão clicado
             const activeButton = document.querySelector(`.stepper-btn[data-index="${index}"]`);
             if (activeButton) {
                 activeButton.classList.add('active');
             }
             
+            // Renderiza o gráfico para o encontro atual
             renderChart(index); 
         }
 
@@ -578,35 +643,41 @@
             const mainContent = document.getElementById('main-content');
             
             courseData.forEach((encontro, index) => {
+                // 1. Criar Botões do Stepper
                 const button = document.createElement('button');
                 button.className = 'stepper-btn px-3 py-2 text-sm md:px-4 md:py-2 md:text-base rounded-md border shadow-sm';
                 
                 button.textContent = encontro.title === 'Extras' ? 'Extras' : `Encontro ${index + 1}`;
                 button.dataset.index = index;
                 
-                // Oculta os botões dos Encontros 3 a 6
-                if (index > 1 && index < courseData.length - 1) { 
+                // Lógica para "travar" encontros futuros (índices 3, 4, 5)
+                // index > 2 (começa do Encontro 4)
+                // index < courseData.length - 1 (termina antes do "Extras")
+                if (index > 2 && index < courseData.length - 1) { 
                     button.classList.add('hidden-access');
-                    button.onclick = null;
+                    button.onclick = null; // Remove o clique
                 } else {
                     button.onclick = () => showEncontro(index);
                 }
 
                 stepperNav.appendChild(button);
 
+                // 2. Criar Divs de Conteúdo
                 const isExtra = encontro.title === 'Extras';
 
                 const contentDiv = document.createElement('div');
                 contentDiv.id = `encontro-${index}`;
                 contentDiv.className = 'encontro-content p-6 md:p-8 rounded-xl shadow-lg border';
                 
+                // Conteúdo Principal (Título, Subtítulo)
                 let mainContentHtml = `
-                        <div class="text-center">
-                            <h2 class="text-2xl md:text-3xl font-bold text-stone-50 color-primary">${encontro.icon} ${encontro.title}</h2>
-                            <p class="mt-1 text-stone-400">${encontro.subtitle}</p>
-                        </div>
+                            <div class="text-center">
+                                <h2 class="text-2xl md:text-3xl font-bold text-stone-50 color-primary">${encontro.icon} ${encontro.title}</h2>
+                                <p class="mt-1 text-stone-400">${encontro.subtitle}</p>
+                            </div>
                 `;
 
+                // Adiciona blocos de Objetivo e Tempo (se não for "Extras")
                 if (!isExtra) {
                     mainContentHtml += `
                             <div class="mt-6 border-t border-stone-700 pt-6">
@@ -615,6 +686,58 @@
                             </div>
                     `;
                     
+                    // CARD SOBRE PREGUIÇA METACOGNITIVA (APENAS ENCONTRO 3)
+                    if (index === 2) {
+                        mainContentHtml += `
+                                <div class="mt-6 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md text-left">
+                                    <h4 class="font-bold text-stone-100 mb-2">🧠 O que é "Preguiça Metacognitiva"?</h4>
+                                    <p class="text-sm text-stone-300">Também conhecida como <span class="font-semibold color-metodologia">Overreliance (Confiança Excessiva)</span>, é a tendência de aceitar a resposta de uma IA (como um código ou uma explicação) como correta e completa sem verificá-la ou tentar entendê-la profundamente. É quando "terceirizamos" o pensamento crítico para a máquina, pulando a etapa essencial de <span class="font-semibold color-metodologia">avaliar, testar e refletir</span> sobre a solução gerada.</p>
+                                </div>
+                        `;
+                        
+                        // NOVO CARD: GUIA DE AVALIAÇÃO CRÍTICA
+                        mainContentHtml += `
+                                <div class="mt-6 border-t border-stone-700 pt-6">
+                                    <h3 class="text-lg font-semibold text-stone-100 mb-4">🧩 Guia de Avaliação Crítica de Código C Gerado por IA</h3>
+                                    <p class="text-stone-400 text-sm mb-4">Use estes tópicos para "interrogar" o código que a IA produziu:</p>
+                                    <ul class="space-y-4 text-stone-300 text-sm">
+                                        <li>
+                                            <span class="font-bold color-metodologia">1. Correção Funcional e Lógica:</span><br>
+                                            O código realmente faz o que foi pedido? A IA entendeu a lógica e os casos estudados, ou apenas produziu algo que parece correto superficialmente?
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">2. Segurança e Vulnerabilidades:</span><br>
+                                            Este é crítico. A IA pode ter sido treinada em código antigo ou inseguro. Verifique ativamente falhas comuns (ex: buffer overflow em C).
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">3. Contexto e Integração:</span><br>
+                                            O código se encaixa no restante do objetivo? Ele usa as convenções, variáveis e padrões já existentes ou está "isolado" e desalinhado?
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">4. Eficiência e Otimização:</span><br>
+                                            A IA geralmente oferece a solução mais fácil, não a mais performática. Avalie se há loops desnecessários, linhas ineficientes ou uso excessivo de memória.
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">5. Manutenção e Legibilidade:</span><br>
+                                            O código é legível para um humano? É fácil de manter e depurar? A IA pode gerar código "inteligente" (complexo) que é difícil de dar manutenção.
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">6. Dependências e Licenciamento:</span><br>
+                                            A IA sugeriu bibliotecas novas? Elas são necessárias e seguras? O código gerado é uma cópia direta de outro lugar (risco de plágio ou violação de licença)?
+                                        </li>
+                                    </ul>
+                                </div>
+                        `;
+                        
+                        // NOVO CARD: IMPORTANTE (ANALOGIA DO ESTAGIÁRIO)
+                        mainContentHtml += `
+                                <div class="mt-6 p-4 bg-stone-700/60 rounded-lg border-2 border-secondary shadow-md text-left">
+                                    <h4 class="font-bold text-stone-100 mb-2"><span class="color-secondary">⚠️</span> Importante: A Analogia do Estagiário</h4>
+                                    <p class="text-sm text-stone-300">Pensem na IA como um <span class="font-semibold color-metodologia">estagiário genial</span>: é incrivelmente rápido e sabe muito, mas não tem experiência prática nem senso de responsabilidade. Ele entrega o primeiro rascunho. <span class="font-semibold color-metodologia">Você é o Sênior</span> que deve revisar, corrigir e aprovar.</p>
+                                </div>
+                        `;
+                    }
+
                     // BLOCO METODOLOGIA (APENAS ENCONTRO 1)
                     if (index === 0) {
                         mainContentHtml += `
@@ -636,7 +759,7 @@
                         `;
                     }
 
-                    // DISTRIBUIÇÃO DO TEMPO
+                    // DISTRIBUIÇÃO DO TEMPO (Gráfico + Cards)
                     mainContentHtml += `
                             <div class="mt-6">
                                 <h3 class="text-lg font-semibold text-stone-100 mb-2">⏱️ Distribuição do Tempo (1h 40min)</h3>
@@ -737,8 +860,8 @@
             showEncontro(0);
         }
 
+        // Adiciona o listener para executar o init() quando o DOM estiver pronto
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
-
