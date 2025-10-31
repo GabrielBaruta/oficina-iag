@@ -7,11 +7,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Chosen Palette: Dark Harmony V12 (Stone-950 Background, Cyan-400 Accent, Fuchsia-400 Secondary, Zinc-300 Details) -->
-    <!-- Application Structure Plan: A single-page application using a top stepper navigation to switch between the 6 course sessions ('Encontros') and an 'Extras' tab. This focused, step-by-step view is more intuitive for a curriculum than a scrolling page. Each session's content is displayed in a card, featuring objectives and a Chart.js horizontal stacked bar chart to visually represent the time allocation for activities, making the schedule easy to grasp. The primary user flow is clicking a step to view the corresponding session's details. -->
-    <!-- Visualization & Content Choices: Report Info (Session Schedule) -> Goal (Inform/Compare time allocation) -> Viz (Chart.js Horizontal Stacked Bar) -> Interaction (Hover for tooltip with activity name/duration) -> Justification (More engaging and quicker to read than a text list); Report Info (Course Structure) -> Goal (Organize/Navigate) -> Presentation (HTML/CSS Stepper) -> Interaction (Click to show session content) -> Justification (Provides clear progress indication and focused view). NO SVG/Mermaid used. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <style>
+    <!-- Chosen Palette: Dark Harmony V12 (Stone-950 Background, Cyan-400 Accent, Fuchsia-400 Secondary, Zinc-300 Details) --><!-- Application Structure Plan: A single-page application using a top stepper navigation to switch between the 6 course sessions ('Encontros') and an 'Extras' tab. This focused, step-by-step view is more intuitive for a curriculum than a scrolling page. Each session's content is displayed in a card, featuring objectives and a Chart.js horizontal stacked bar chart to visually represent the time allocation for activities, making the schedule easy to grasp. The primary user flow is clicking a step to view the corresponding session's details. --><!-- Visualization & Content Choices: Report Info (Session Schedule) -> Goal (Inform/Compare time allocation) -> Viz (Chart.js Horizontal Stacked Bar) -> Interaction (Hover for tooltip with activity name/duration) -> Justification (More engaging and quicker to read than a text list); Report Info (Course Structure) -> Goal (Organize/Navigate) -> Presentation (HTML/CSS Stepper) -> Interaction (Click to show session content) -> Justification (Provides clear progress indication and focused view). NO SVG/Mermaid used. --><!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. --><style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
@@ -111,6 +107,18 @@
         
         /* Cor customizada para o Título da Aba Extras */
         .color-extras-titulo { color: #837492; }
+
+        /* Nova classe para a borda do card "Importante: A Analogia do Estagiário" */
+        .border-analogy-card { border-color: #57534e; } /* stone-600 */
+
+        /* Estilo para código inline */
+        code {
+            background-color: #44403c; /* stone-700 */
+            color: #f5f5f4; /* stone-100 */
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -122,13 +130,11 @@
 
         <nav class="mb-8">
             <div class="flex flex-wrap justify-center gap-2 md:gap-4" id="stepper-nav">
-                <!-- Botões do Stepper serão injetados aqui pelo JS -->
-            </div>
+                <!-- Botões do Stepper serão injetados aqui pelo JS --></div>
         </nav>
 
         <main id="main-content">
-            <!-- Conteúdo dos Encontros será injetado aqui pelo JS -->
-        </main>
+            <!-- Conteúdo dos Encontros será injetado aqui pelo JS --></main>
 
     </div>
 
@@ -154,48 +160,48 @@
                 icon: "💬",
                 subtitle: "A arte de fazer as perguntas certas para a IA.",
                 objective: `Treinar a habilidade de criar prompts eficazes para decompor e esclarecer problemas, focando na compreensão do enunciado antes de buscar a solução. A ênfase é na clareza da especificação.
-                        <div class="mt-4 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md text-left">
-                            <h4 class="font-bold text-stone-100 mb-2">💡 O que é um Prompt para IAG?</h4>
-                            <p class="text-sm text-stone-300">O objetivo fundamental de um prompt para Inteligência Artificial (IA) é servir como uma instrução clara e precisa que guia a IA para gerar a resposta mais relevante, útil e específica possível. Em essência, o prompt é a ponte de comunicação entre o usuário e o modelo de linguagem, traduzindo uma necessidade humana em um comando que a máquina possa compreender e executar.</p>
-                        </div>
-                        <div class="mt-4 text-left">
-                            <h4 class="font-bold text-stone-100 mb-2">Instruções para um bom prompt:</h4>
-                            <ul class="list-disc list-inside space-y-4 text-stone-300 text-sm">
-                                <li><span class="font-semibold color-metodologia">Defina a Persona da IA.</span> (Deixe claro qual será o papel da IA)
-                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
-                                        Exemplo: "Você é um engenheiro de software sênior da Google, especialista em otimização de algoritmos."
-                                    </p>
-                                </li>
-                                <li><span class="font-semibold color-metodologia">O que a IA precisa fazer.</span> (Direcionar a tarefa)
-                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
-                                        Exemplo: "Explique o conceito de recursividade em programação."
-                                    </p>
-                                </li>
-                                <li><span class="font-semibold color-metodologia">Fornecer Contexto.</span> (Estabelecer um foco)
-                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
-                                        Exemplo: "Estou estudando para uma prova de Estrutura de Dados e tenho dificuldade em entender a diferença de performance entre uma busca binária recursiva e uma iterativa."
-                                    </p>
-                                </li>
-                                <li><span class="font-semibold color-metodologia">Pra quem ela está falando.</span> (Estabelecer o tom e o estilo)
-                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
-                                        Exemplo: "A explicação deve ser clara para um aluno do primeiro ano de Engenharia da Computação, que já entende de laços de repetição (for/while), mas nunca viu recursividade."
-                                    </p>
-                                </li>
-                                <li><span class="font-semibold color-metodologia">Regras e Limitações.</span> (Especificar o que é importante e o que não é)
-                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
-                                        Exemplo: "Não use código em Python, apenas pseudocódigo. Evite explicações matemáticas complexas sobre a complexidade de espaço e foque na intuição por trás do consumo de memória."
-                                    </p>
-                                </li>
-                                <li><span class="font-semibold color-metodologia">Definir o Formato da Saída.</span> (Exemplo de resposta)
-                                    <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
-                                        Exemplo: "Organize a resposta da seguinte forma:<br>Analogia: Uma analogia simples do dia a dia para recursividade.<br>Pseudocódigo: O pseudocódigo de uma função de fatorial recursiva.<br>Explicação passo a passo: Mostre a pilha de chamadas para fatorial(3).<br>Vantagens e Desvantagens: Uma tabela comparando a abordagem recursiva com a iterativa."
-                                    </p>
-                                </li>
-                            </ul>
-                            <div class="mt-4 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md">
-                                <p class="text-sm text-stone-100 font-semibold text-center">⚠️ Vale lembrar que a língua "nativa" da maioria das IAs Generativas é o inglês, sendo interessante mudar o Idioma para Refinar Resultados!</p>
+                            <div class="mt-4 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md text-left">
+                                <h4 class="font-bold text-stone-100 mb-2">💡 O que é um Prompt para IAG?</h4>
+                                <p class="text-sm text-stone-300">O objetivo fundamental de um prompt para Inteligência Artificial (IA) é servir como uma instrução clara e precisa que guia a IA para gerar a resposta mais relevante, útil e específica possível. Em essência, o prompt é a ponte de comunicação entre o usuário e o modelo de linguagem, traduzindo uma necessidade humana em um comando que a máquina possa compreender e executar.</p>
                             </div>
-                        </div>`,
+                            <div class="mt-4 text-left">
+                                <h4 class="font-bold text-stone-100 mb-2">Instruções para um bom prompt:</h4>
+                                <ul class="list-disc list-inside space-y-4 text-stone-300 text-sm">
+                                    <li><span class="font-semibold color-metodologia">Defina a Persona da IA.</span> (Deixe claro qual será o papel da IA)
+                                        <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                            Exemplo: "Você é um engenheiro de software sênior da Google, especialista em otimização de algoritmos."
+                                        </p>
+                                    </li>
+                                    <li><span class="font-semibold color-metodologia">O que a IA precisa fazer.</span> (Direcionar a tarefa)
+                                        <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                            Exemplo: "Explique o conceito de recursividade em programação."
+                                        </p>
+                                    </li>
+                                    <li><span class="font-semibold color-metodologia">Fornecer Contexto.</span> (Estabelecer um foco)
+                                        <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                            Exemplo: "Estou estudando para uma prova de Estrutura de Dados e tenho dificuldade em entender a diferença de performance entre uma busca binária recursiva e uma iterativa."
+                                        </p>
+                                    </li>
+                                    <li><span class="font-semibold color-metodologia">Pra quem ela está falando.</span> (Estabelecer o tom e o estilo)
+                                        <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                            Exemplo: "A explicação deve ser clara para um aluno do primeiro ano de Engenharia da Computação, que já entende de laços de repetição (for/while), mas nunca viu recursividade."
+                                        </p>
+                                    </li>
+                                    <li><span class="font-semibold color-metodologia">Regras e Limitações.</span> (Especificar o que é importante e o que não é)
+                                        <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                            Exemplo: "Não use código em Python, apenas pseudocódigo. Evite explicações matemáticas complexas sobre a complexidade de espaço e foque na intuição por trás do consumo de memória."
+                                        </p>
+                                    </li>
+                                    <li><span class="font-semibold color-metodologia">Definir o Formato da Saída.</span> (Exemplo de resposta)
+                                        <p class="mt-1 ml-5 pl-2 border-l-2 border-stone-600 text-xs text-stone-400 italic">
+                                            Exemplo: "Organize a resposta da seguinte forma:<br>Analogia: Uma analogia simples do dia a dia para recursividade.<br>Pseudocódigo: O pseudocódigo de uma função de fatorial recursiva.<br>Explicação passo a passo: Mostre a pilha de chamadas para fatorial(3).<br>Vantagens e Desvantagens: Uma tabela comparando a abordagem recursiva com a iterativa."
+                                        </p>
+                                    </li>
+                                </ul>
+                                <div class="mt-4 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md">
+                                    <p class="text-sm text-stone-100 font-semibold text-center">⚠️ Vale lembrar que a língua "nativa" da maioria das IAs Generativas é o inglês, sendo interessante mudar o Idioma para Refinar Resultados!</p>
+                                </div>
+                            </div>`,
                 activities: [
                     { label: "Planejamento (20 min)", duration: 20, icon: "📝" },
                     { label: "Estudo com IA (50 min)", duration: 50, icon: "💻" },
@@ -294,6 +300,79 @@
                 ],
                 extraContent: `
                             <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">🚀 Exemplo Prático</h3>
+                                <div class="p-4 bg-stone-700/60 rounded-lg border-2 border-tools-card-general text-stone-300 text-sm">
+                                    <p class="mb-3">Crie um programa em C para o gerenciamento de uma oficina mecânica.</p>
+                                    <p class="mb-3">Defina uma <code>struct Veiculo</code> que armazene:</p>
+                                    <ul class="list-disc list-inside ml-4 mb-3 space-y-1">
+                                        <li><code>placa</code> (string, ex: "ABC1234")</li>
+                                        <li><code>modelo</code> (string, ex: "Fusca")</li>
+                                        <li><code>ano</code> (inteiro)</li>
+                                        <li><code>servico</code> (string, ex: "Troca de oleo")</li>
+                                    </ul>
+                                    <p class="mb-3">O programa deve armazenar os veículos em um array dinâmico de ponteiros (ex: <code>struct Veiculo** oficina</code>).</p>
+                                    <p class="mb-3">Crie um menu principal que permita ao usuário:</p>
+                                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                                        <li><strong>Registrar Veículo:</strong> Pede os dados ao usuário, aloca memória (<code>malloc</code>) para um novo <code>Veiculo</code>, armazena os dados, e usa <code>realloc</code> para adicionar este novo ponteiro ao array <code>oficina</code>.</li>
+                                        <li><strong>Listar Veículos:</strong> Imprime a placa, modelo e serviço de todos os veículos registrados.</li>
+                                        <li><strong>Concluir Serviço (Remover):</strong> Pede a placa do veículo, o encontra na lista, libera a memória (<code>free</code>) alocada para esse veículo, e o remove do array <code>oficina</code> (ajustando o tamanho do array com <code>realloc</code>).</li>
+                                        <li><strong>Sair:</strong> Libera toda a memória alocada antes de fechar o programa.</li>
+                                    </ol>
+                                
+                                    <!-- Conteúdo dos Pontos Críticos Movido para Cá -->
+                                    <div class="mt-4 pt-4 border-t border-stone-600">
+                                        <h4 class="font-bold text-stone-100 mb-3 color-metodologia">💡 Pontos para a Análise Crítica em Sala</h4>
+                                        
+                                        <!-- Botão para revelar -->
+                                        <button onclick="toggleAnaliseCritica()" id="btn-analise" class="inline-block px-5 py-2 text-sm text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #685C74;">
+                                            <span class="mr-2">👀</span> Revelar Pontos
+                                        </button>
+    
+                                        <!-- Conteúdo Oculto -->
+                                        <ul id="content-analise" class="hidden space-y-4 text-stone-300 text-sm mt-4">
+                                            <li>
+                                                <strong class="text-stone-100">1. O Desastre da Alocação (O Ponto Principal)</strong>
+                                                <p class="mt-1 mb-2">Este cenário tem dois níveis de alocação: o array de ponteiros (<code>oficina</code>) e cada <code>Veiculo</code> individual (<code>oficina[i]</code>).</p>
+                                                <ul class="list-disc list-inside ml-4 space-y-2">
+                                                    <li><strong>Vazamento na Remoção (Opção 3):</strong> Ao remover um veículo, a IA lembrou de dar <code>free()</code> no <code>Veiculo</code> (<code>free(oficina[indice_para_remover])</code>) antes de reorganizar o array <code>oficina</code>? Muitos esquecem, removendo apenas o ponteiro do array, mas deixando o <code>Veiculo</code> órfão na memória.</li>
+                                                    <li><strong>Vazamento na Saída (Opção 4):</strong> Este é o erro mais provável. Para sair corretamente, o código precisa:
+                                                        <ul class="list-decimal list-inside ml-6 my-1 text-xs">
+                                                            <li>Iterar pelo array <code>oficina</code> e dar <code>free()</code> em cada <code>Veiculo</code> (ex: <code>free(oficina[i])</code>).</li>
+                                                            <li>Depois disso, dar <code>free()</code> no próprio array <code>oficina</code> (<code>free(oficina)</code>).</li>
+                                                        </ul>
+                                                        <strong>Análise:</strong> A IA provavelmente fará apenas <code>free(oficina)</code>, "vazando" todos os veículos que ainda estavam registrados.
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="text-stone-100">2. O Uso Incorreto de <code>realloc</code></strong>
+                                                <p class="mt-1 mb-2"><code>realloc</code> pode falhar e retornar <code>NULL</code>. Se isso acontecer, o código <code>oficina = realloc(oficina, novo_tamanho);</code> perde o ponteiro original para a memória antiga (outro memory leak).</p>
+                                                <ul class="list-disc list-inside ml-4 space-y-1 text-xs">
+                                                    <li><strong>Análise:</strong> A IA usou a forma segura, com um ponteiro temporário?</li>
+                                                    <li><strong>Inseguro (provável):</strong> <code>oficina = realloc(oficina, ...);</code></li>
+                                                    <li><strong>Seguro (improvável):</strong> <code>void* temp = realloc(oficina, ...); if (temp == NULL) { /* tratar erro */ } else { oficina = temp; }</code></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="text-stone-100">3. Lógica de Remoção (Opção 3)</strong>
+                                                <p class="mt-1 mb-2">Ao remover um item do meio do array <code>oficina</code>, como a IA "tampou o buraco"?</p>
+                                                <ul class="list-disc list-inside ml-4 space-y-1 text-xs">
+                                                    <li><strong>Análise (Ineficiente):</strong> Ela moveu todos os elementos seguintes uma posição para trás (um loop <code>memmove</code> ou <code>for</code>)?</li>
+                                                    <li><strong>Análise (Eficiente):</strong> Ela copiou o ponteiro do último veículo para a posição do veículo removido e depois diminuiu o tamanho do array? (Menos provável que a IA faça isso).</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong class="text-stone-100">4. Verificação de <code>malloc</code> (O Básico)</strong>
+                                                <p class="mt-1">A IA verificou se <code>malloc</code> (na Opção 1) e <code>realloc</code> (nas Opções 1 e 3) retornaram <code>NULL</code>?</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Fim dos Pontos Críticos -->
+                                </div>
+                                <!-- Fim do Cartão Didático -->
+
+                            </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
                                 <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
                                 <ul class="space-y-4 text-stone-300">
                                     <li>
@@ -358,13 +437,44 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <div class="relative p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md">
+                                    <span class="absolute top-3 right-3 bg-stone-700 text-stone-300 text-xs font-semibold px-2 py-0.5 rounded-full uppercase">Opcional</span>
+                                    <h4 class="font-bold text-stone-100 mb-2 text-center">🏆 Missão Bônus</h4>
+                                    
+                                    <p class="text-sm text-stone-300 text-left mb-4">Utilize uma IA generativa para criar uma função simples em linguagem C que leia o nome de um usuário e uma senha do terminal e os armazene em variáveis. Sua tarefa não é apenas gerar o código, mas realizar uma Auditoria de Segurança completa.</p>
+                                    
+                                    <h5 class="font-semibold text-stone-200 text-left text-sm mb-2">Entregáveis:</h5>
+                                    <ul class="list-disc list-inside text-sm text-stone-300 text-left space-y-1 mb-4">
+                                        <li>Prompt usado pela IA</li>
+                                        <li>Código da IA sem modificações</li>
+                                        <li>Código modificado pelo participante com os devidos comentários explicando o porque suas alterações tornam o código mais seguro</li>
+                                        <li>Um breve texto (1-2 parágrafos) respondendo as seguintes perguntas: O código é seguro? Quais vulnerabilidades (ex: acúmulo de lixo no input) ele apresenta?</li>
+                                    </ul>
+                                    
+                                    <h5 class="font-semibold text-stone-200 text-left text-sm mb-2 mt-4">Instruções de Entrega:</h5>
+                                    <p class="text-sm text-stone-300 text-left mb-4">Para entregar a atividade, crie uma pasta com seu nome completo. Dentro dela, coloque todos os arquivos a serem entregues. Depois, compacte essa pasta em um arquivo .zip e a envie no Drive.</p>
+                                    
+                                    <div class="mt-4 pt-3 border-t border-stone-500/50 text-center">
+                                        <p class="text-sm font-semibold text-stone-100 mb-4">
+                                            <span class="mr-2">🎁</span> Recompensa: +2 horas complementares
+                                        </p>
+                                        <a href="https://drive.google.com/drive/folders/1iXFtEz60kQnCJSE352nltOesKec4_EJq?usp=sharing" target="_blank" class="inline-block px-5 py-2 text-sm text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #685C74;">
+                                            <span class="mr-2">🚀</span> Entregar Missão
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-center color-plano-pro text-sm mt-6 font-semibold">
+                                Por trás de todo o conhecimento da IA, há mentes humanas: mentes que erram e mentes que criam. Por isso, atente-se tanto aos erros quanto ao plágio.
+                            </p>
                 `
             },
             {
                 title: "Decomposição de Problemas",
                 icon: "🧩",
                 subtitle: "Use a IA para as partes, construa o todo.",
-                objective: "Combater a tendência de 'terceirizar' o processo de resolução. O aluno deve gerenciar a estrutura geral da solução, usando a IAG apenas para gerar código de componentes menores, focando na integração manual.",
+                objective: "Combater a tendência de 'terceirizar' o processo de resolução. O aluno deve gerenciar a estrutura geral da solution, usando a IAG apenas para gerar código de componentes menores, focando na integração manual.",
                 activities: [
                     { label: "Planejamento (20 min)", duration: 20, icon: "📝" },
                     { label: "Estudo com IA (50 min)", duration: 50, icon: "💻" },
@@ -459,7 +569,7 @@
                                 </a>
                                 <p class="mt-4 text-xs text-stone-400">© Professor Muriel Godoi. Material fornecido e todos os direitos reservados.</p>
                             </div>
-               `
+                `
             }
         ];
 
@@ -467,6 +577,35 @@
         let chartInstance = null; 
 
         // --- Funções Auxiliares ---
+
+        /**
+         * Formata minutos em uma string legível (ex: 1h 50min).
+         */
+        function formatDuration(totalMinutes) {
+            if (totalMinutes === 0) return '0min';
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = totalMinutes % 60;
+            let parts = [];
+            if (hours > 0) parts.push(`${hours}h`);
+            if (minutes > 0) parts.push(`${minutes}min`);
+            return parts.join(' ');
+        }
+
+        /**
+         * Alterna a visibilidade dos pontos de análise crítica no Encontro 3.
+         */
+        function toggleAnaliseCritica() {
+            const content = document.getElementById('content-analise');
+            const button = document.getElementById('btn-analise');
+            if (content) {
+                const isHidden = content.classList.toggle('hidden');
+                if (button) {
+                    button.innerHTML = isHidden ? 
+                        '<span class="mr-2">👀</span> Revelar Pontos' : 
+                        '<span class="mr-2">🙈</span> Ocultar Pontos';
+                }
+            }
+        }
 
         /**
          * CORREÇÃO: A função agora aceita 'encontroIndex' para aplicar a lógica de cor corretamente,
@@ -491,13 +630,13 @@
                 }
 
                 html += `
-                        <div class="bg-stone-700/60 p-3 rounded-lg border-2 ${borderClass} shadow-sm flex items-center">
-                            <span class="text-2xl mr-3">${activity.icon}</span>
-                            <div class="flex-grow">
-                                <h4 class="font-medium text-stone-100 text-sm">${activity.label}</h4>
-                                <p class="text-xs text-zinc-300 font-semibold">${activity.duration} min</p>
+                            <div class="bg-stone-700/60 p-3 rounded-lg border-2 ${borderClass} shadow-sm flex items-center">
+                                <span class="text-2xl mr-3">${activity.icon}</span>
+                                <div class="flex-grow">
+                                    <h4 class="font-medium text-stone-100 text-sm">${activity.label}</h4>
+                                    <p class="text-xs text-zinc-300 font-semibold">${activity.duration} min</p>
+                                </div>
                             </div>
-                        </div>
                 `;
             });
             html += '</div>';
@@ -509,6 +648,9 @@
         function renderChart(encontroIndex) {
             const canvas = document.getElementById(`chart-${encontroIndex}`);
             if (!canvas) return;
+
+            // **CORREÇÃO:** Lê a duração total do atributo data-total-duration do canvas
+            const totalDuration = parseInt(canvas.dataset.totalDuration, 10) || 100;
 
             const data = courseData[encontroIndex];
             
@@ -584,7 +726,8 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                        x: { stacked: true, display: false, max: 100 }, // Max 100 minutos
+                        // **CORREÇÃO:** Usa a 'totalDuration' dinâmica como máximo
+                        x: { stacked: true, display: false, max: totalDuration },
                         y: { stacked: true, display: false }
                     },
                     plugins: {
@@ -643,6 +786,10 @@
             const mainContent = document.getElementById('main-content');
             
             courseData.forEach((encontro, index) => {
+                // **MELHORIA:** Calcula a duração total para este encontro
+                const totalDuration = encontro.activities.reduce((acc, act) => acc + act.duration, 0);
+                const formattedDuration = formatDuration(totalDuration);
+
                 // 1. Criar Botões do Stepper
                 const button = document.createElement('button');
                 button.className = 'stepper-btn px-3 py-2 text-sm md:px-4 md:py-2 md:text-base rounded-md border shadow-sm';
@@ -731,7 +878,7 @@
                         
                         // NOVO CARD: IMPORTANTE (ANALOGIA DO ESTAGIÁRIO)
                         mainContentHtml += `
-                                <div class="mt-6 p-4 bg-stone-700/60 rounded-lg border-2 border-secondary shadow-md text-left">
+                                <div class="mt-6 p-4 bg-stone-700/60 rounded-lg border-2 border-analogy-card shadow-md text-left">
                                     <h4 class="font-bold text-stone-100 mb-2"><span class="color-secondary">⚠️</span> Importante: A Analogia do Estagiário</h4>
                                     <p class="text-sm text-stone-300">Pensem na IA como um <span class="font-semibold color-metodologia">estagiário genial</span>: é incrivelmente rápido e sabe muito, mas não tem experiência prática nem senso de responsabilidade. Ele entrega o primeiro rascunho. <span class="font-semibold color-metodologia">Você é o Sênior</span> que deve revisar, corrigir e aprovar.</p>
                                 </div>
@@ -760,15 +907,15 @@
                     }
 
                     // DISTRIBUIÇÃO DO TEMPO (Gráfico + Cards)
+                    // **CORREÇÃO:** Título do tempo e canvas agora são dinâmicos
                     mainContentHtml += `
-                            <div class="mt-6">
-                                <h3 class="text-lg font-semibold text-stone-100 mb-2">⏱️ Distribuição do Tempo (1h 40min)</h3>
-                                <div class="chart-container">
-                                    <canvas id="chart-${index}"></canvas>
+                                <div class="mt-6">
+                                    <h3 class="text-lg font-semibold text-stone-100 mb-2">⏱️ Distribuição do Tempo (${formattedDuration})</h3>
+                                    <div class="chart-container">
+                                        <canvas id="chart-${index}" data-total-duration="${totalDuration}"></canvas>
+                                    </div>
+                                    <!-- Os cards de atividades são renderizados aqui --><div id="activities-cards-${index}">${getActivityCardsHTML(index)}</div>
                                 </div>
-                                <!-- Os cards de atividades são renderizados aqui -->
-                                <div id="activities-cards-${index}">${getActivityCardsHTML(index)}</div>
-                            </div>
                     `;
 
                     // FERRAMENTAS ÚTEIS (APENAS ENCONTRO 1)
