@@ -327,7 +327,7 @@
                                         <button onclick="toggleAnaliseCritica()" id="btn-analise" class="inline-block px-5 py-2 text-sm text-white font-bold rounded-lg shadow-lg hover:bg-stone-600 transition duration-300" style="background-color: #685C74;">
                                             <span class="mr-2">👀</span> Revelar Pontos
                                         </button>
-    
+        
                                         <!-- Conteúdo Oculto -->
                                         <ul id="content-analise" class="hidden space-y-4 text-stone-300 text-sm mt-4">
                                             <li>
@@ -376,7 +376,7 @@
                                 <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
                                 <ul class="space-y-4 text-stone-300">
                                     <li>
-                                        <span class="font-bold color-metodologia">Planejamento:</span> Delinear um plano de como a solução deve funcionar, quais funções serão necessárias e quais testes poderiam validá-la.
+                                        <span class="font-bold color-metodologia">Planejamento:</span> Delinear um plano de como a solution deve funcionar, quais funções serão necessárias e quais testes poderiam validá-la.
                                     </li>
                                     <li>
                                         <span class="font-bold color-metodologia">Estudo com IA:</span> 
@@ -486,14 +486,22 @@
                                 <h3 class="text-lg font-semibold text-stone-100 mb-3">🛠️ Detalhamento das Atividades</h3>
                                 <ul class="space-y-4 text-stone-300">
                                     <li>
-                                        <span class="font-bold color-primary">Planejamento:</span> Receber um enunciado de problema intencionalmente vago. A tarefa é listar quais informações estão faltando para que o problema possa ser resolvido.
+                                        <span class="font-bold color-metodologia">Planejamento:</span> Dado o problema, crie uma Agenda de Contatos, a primeira tarefa é <b class="text-stone-100">não</b> pedir o código. Em vez disso, desenhe a arquitetura no papel ou em um editor de texto:
+                                        <ul class="list-disc ml-6 mt-2 space-y-1 text-stone-400">
+                                            <li>Quais <code>structs</code> são necessárias?</li>
+                                            <li>Quais funções (componentes) serão criadas? (ex: <code>adicionar()</code>, <code>listar()</code>, <code>buscar()</code>)</li>
+                                            <li>Como elas vão se comunicar? (Quais parâmetros cada função receberá?)</li>
+                                        </ul>
                                     </li>
                                     <li>
-                                        <span class="font-bold color-primary">Estudo com IA:</span> Solicitar à IAG o código para cada componente separadamente. A principal tarefa do aluno é integrar essas peças de código, garantindo que funcionem juntas corretamente.
+                                        <span class="font-bold color-metodologia">Estudo com IA:</span> Agora, use a IA como assistente para criar os "blocos" (componentes) que você planejou.
+                                        <ul class="list-disc ml-6 mt-2 space-y-1 text-stone-400">
+                                            <li>Use prompts específicos para pedir <b>apenas</b> as funções isoladas (ex: <code>"Crie uma função em C que receba um array de Contatos e um novo Contato, e o adicione ao array"</code>).</li>
+                                            <li><b class="text-stone-100">Sua Tarefa Principal:</b> Escrever a função <code>main()</code> manualmente e <b>integrar</b> as peças geradas. Você é o responsável por fazer os componentes "conversarem".</li>
+                                        </ul>
                                     </li>
                                     <li>
-                                        <span class="font-bold color-primary">Reflexão:</span> Discutir: Quais foram os desafios ao integrar os códigos gerados? As partes geradas pela IAG eram compatíveis? Essa tarefa força o aluno a manter o monitoramento do processo global.
-                                    </li>
+                                        <span class="font-bold color-metodologia">Reflexão (A Revisão):</span> Analise o processo. Foi mais fácil ou mais difícil do que pedir o programa inteiro? Quais problemas você encontrou ao integrar as peças? Como essa abordagem força você a entender a "visão global" do projeto, algo que a IA não tem?</li>
                                 </ul>
                             </div>
                 `
@@ -797,15 +805,8 @@
                 button.textContent = encontro.title === 'Extras' ? 'Extras' : `Encontro ${index + 1}`;
                 button.dataset.index = index;
                 
-                // Lógica para "travar" encontros futuros (índices 3, 4, 5)
-                // index > 2 (começa do Encontro 4)
-                // index < courseData.length - 1 (termina antes do "Extras")
-                if (index > 2 && index < courseData.length - 1) { 
-                    button.classList.add('hidden-access');
-                    button.onclick = null; // Remove o clique
-                } else {
-                    button.onclick = () => showEncontro(index);
-                }
+                // Lógica de "travar" encontros foi removida. Todos estão liberados.
+                button.onclick = () => showEncontro(index);
 
                 stepperNav.appendChild(button);
 
@@ -833,16 +834,27 @@
                             </div>
                     `;
                     
-                    // CARD SOBRE PREGUIÇA METACOGNITIVA (APENAS ENCONTRO 3)
-                    if (index === 2) {
+                    // CARD SOBRE PREGUIÇA METACOGNITIVA (APENAS ENCONTRO 4)
+                    if (index === 3) {
                         mainContentHtml += `
                                 <div class="mt-6 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md text-left">
                                     <h4 class="font-bold text-stone-100 mb-2">🧠 O que é "Preguiça Metacognitiva"?</h4>
                                     <p class="text-sm text-stone-300">Também conhecida como <span class="font-semibold color-metodologia">Overreliance (Confiança Excessiva)</span>, é a tendência de aceitar a resposta de uma IA (como um código ou uma explicação) como correta e completa sem verificá-la ou tentar entendê-la profundamente. É quando "terceirizamos" o pensamento crítico para a máquina, pulando a etapa essencial de <span class="font-semibold color-metodologia">avaliar, testar e refletir</span> sobre a solução gerada.</p>
                                 </div>
                         `;
+                    }
+                    
+                    // CARD SOBRE ANÁLISE CRÍTICA E PLÁGIO (APENAS ENCONTRO 3)
+                    if (index === 2) {
+                        mainContentHtml += `
+                                <div class="mt-6 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md text-left">
+                                    <h4 class="font-bold text-stone-100 mb-2">🔬 O que é Análise Crítica e Plágio?</h4>
+                                    <p class="text-sm text-stone-300 mb-2"><span class="font-semibold color-metodologia">Análise Crítica:</span> É o ato de <span class="font-semibold text-stone-100">não</span> aceitar uma informação (especialmente um código de IA) como verdade absoluta. É o processo de <b class="text-stone-100">questionar, testar e verificar</b>. Pergunte-se: "Isso está correto? Isso é seguro? Isso é eficiente? Isso faz sentido no meu projeto?"</p>
+                                    <p class="text-sm text-stone-300"><span class="font-semibold color-metodologia">Risco de Plágio:</span> As IAs foram treinadas com vastas quantidades de código da internet. Às vezes, elas podem gerar blocos de código que são <span class="font-semibold text-stone-100">cópias diretas</span> de repositórios públicos (ex: GitHub). Usar esse código sem entender e sem dar o devido crédito pode ser considerado plágio ou até violar licenças de software.</p>
+                                </div>
+                        `;
                         
-                        // NOVO CARD: GUIA DE AVALIAÇÃO CRÍTICA
+                        // NOVO CARD: GUIA DE AVALIAÇÃO CRÍTICA (ENCONTRO 3)
                         mainContentHtml += `
                                 <div class="mt-6 border-t border-stone-700 pt-6">
                                     <h3 class="text-lg font-semibold text-stone-100 mb-4">🧩 Guia de Avaliação Crítica de Código C Gerado por IA</h3>
@@ -882,6 +894,81 @@
                                     <h4 class="font-bold text-stone-100 mb-2"><span class="color-secondary">⚠️</span> Importante: A Analogia do Estagiário</h4>
                                     <p class="text-sm text-stone-300">Pensem na IA como um <span class="font-semibold color-metodologia">estagiário genial</span>: é incrivelmente rápido e sabe muito, mas não tem experiência prática nem senso de responsabilidade. Ele entrega o primeiro rascunho. <span class="font-semibold color-metodologia">Você é o Sênior</span> que deve revisar, corrigir e aprovar.</p>
                                 </div>
+                        `;
+                    }
+
+                    // TÓPICOS-CHAVE (APENAS ENCONTRO 4)
+                    if (index === 3) {
+                        mainContentHtml += `
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-4">🧩 Tópicos-Chave: O Papel do Arquiteto</h3>
+                                <div class="p-4 bg-stone-700/60 rounded-lg border-2 border-analogy-card shadow-md text-left mb-4">
+                                    <h4 class="font-bold text-stone-100 mb-2"><span class="color-metodologia">O que é um "Arquiteto da Solução"?</span></h4>
+                                    <p class="text-sm text-stone-300">É o profissional (neste caso, <b class="text-stone-100">você!</b>) que <b class="text-stone-100">planeja</b> a estrutura de um sistema. O Arquiteto não se preocupa em escrever cada linha de código imediatamente; primeiro, ele decide:
+                                        <ul class="list-disc list-inside ml-4 mt-2 text-sm text-stone-400">
+                                            <li>Quais são os "blocos de construção" (componentes) necessários?</li>
+                                            <li>Como esses blocos devem se conectar e "conversar" entre si?</li>
+                                            <li>Qual é a "planta baixa" (a estrutura geral) do programa?</li>
+                                        </ul>
+                                    <p class="text-sm text-stone-300 mt-2">Ao usar IA, seu papel principal se torna o de Arquiteto, e não o de "pedreiro" (que apenas assenta os tijolos que a IA entrega).</p>
+                                </div>
+                                <ul class="space-y-4 text-stone-300 text-sm">
+                                    <li>
+                                        <span class="font-bold color-metodologia">1. Dividir para Conquistar:</span><br>
+                                        É mais fácil (e seguro) construir uma casa montando paredes prontas do que pedindo a "casa inteira" de uma vez. Vamos quebrar o problema complexo em partes menores e bem definidas.
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-metodologia">2. IA como Assistente de Componentes:</span><br>
+                                        Usamos a IA para criar os "blocos" (componentes) que planejamos. Em vez de pedir o programa inteiro, pedimos funções específicas: "Crie uma função que faça X".
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-metodologia">3. O Desafio da Integração Manual:</span><br>
+                                        Este é o <b class="text-stone-100">seu trabalho principal</b> como Arquiteto. Você é o responsável por pegar os blocos que a IA gerou e conectá-los (integrá-los) manualmente na sua função <code>main()</code>, garantindo que o fluxo de dados funcione.
+                                    </li>
+                                    <li>
+                                        <span class="font-bold color-metodologia">4. Você Mantém a Visão Global:</span><br>
+                                        A IA só conhece a pequena parte que você pediu. Só você (o Arquiteto) tem a visão do "todo" e sabe como as partes devem funcionar juntas.
+                                    </li>
+                                </ul>
+                            </div>
+                        `;
+                        
+                        // EXEMPLO PRÁTICO (ENCONTRO 4)
+                        mainContentHtml += `
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-4">🚀 Exemplo Prático: O Arquiteto da Agenda de Contatos</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    
+                                    <!-- Abordagem Incorreta -->
+                                    <div class="p-4 bg-stone-700/60 rounded-lg border-2 border-red-700/70 shadow-md">
+                                        <h4 class="font-bold text-red-400 mb-2">❌ Abordagem 1: "Terceirizar" (Ineficaz)</h4>
+                                        <p class="text-sm text-stone-300 mb-2">O aluno "joga" o problema inteiro para a IA:</p>
+                                        <code class="text-xs">"Faça um programa completo em C de agenda de contatos que adiciona, lista e remove nomes."</code>
+                                        <ul class="list-disc list-inside ml-4 mt-3 text-sm text-stone-400 space-y-1">
+                                            <li><b>Resultado:</b> Você recebe um código gigante.</li>
+                                            <li><b>Problema:</b> Você não entende como ele funciona, não sabe como modificá-lo e (pior) não aprendeu nada sobre a estrutura.</li>
+                                            <li><b>Isso é Preguiça Metacognitiva.</b></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Abordagem Correta -->
+                                    <div class="p-4 bg-stone-700/60 rounded-lg border-2 border-green-600/70 shadow-md">
+                                        <h4 class="font-bold text-green-400 mb-2">✅ Abordagem 2: "O Arquiteto" (Eficaz)</h4>
+                                        <p class="text-sm text-stone-300 mb-2">O aluno <b class="text-stone-100">planeja</b> e pede os <b class="text-stone-100">componentes</b>:</p>
+                                        <p class="text-xs text-stone-400 mb-1"><b>Passo 1 (Aluno):</b> "Vou precisar de uma <code>struct Contato</code>."</p>
+                                        <p class="text-xs text-stone-400 mb-1"><b>Passo 2 (Aluno para IA):</b></p>
+                                        <code class="text-xs">"Crie uma função em C que recebe um array de Contatos e um novo Contato, e o adicione ao array."</code>
+                                        <p class="text-xs text-stone-400 mb-1 mt-1"><b>Passo 3 (Aluno para IA):</b></p>
+                                        <code class="text-xs">"Agora, crie uma função que recebe o array de Contatos e imprime todos eles."</code>
+                                        <p class="text-xs text-stone-400 mb-1 mt-1"><b>Passo 4 (Aluno):</b></p>
+                                        <code class="text-xs">"Eu vou escrever a função main() e o menu, e vou 'chamar' as funções que a IA me deu."</code>
+                                        <ul class="list-disc list-inside ml-4 mt-3 text-sm text-stone-400 space-y-1">
+                                            <li><b>Resultado:</b> Você entende a estrutura, controla o fluxo do programa e aprendeu sobre integração.</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
                         `;
                     }
 
@@ -1012,4 +1099,3 @@
     </script>
 </body>
 </html>
-
