@@ -474,7 +474,7 @@
                 title: "Decomposição de Problemas",
                 icon: "🧩",
                 subtitle: "Use a IA para as partes, construa o todo.",
-                objective: "Combater a tendência de 'terceirizar' o processo de resolução. O aluno deve gerenciar a estrutura geral da solution, usando a IAG apenas para gerar código de componentes menores, focando na integração manual.",
+                objective: "Combater a tendência de 'terceirizar' o processo de resolução. O programador deve gerenciar a estrutura geral da solução, usando a IAG apenas para gerar código de componentes menores, focando na integração manual.",
                 activities: [
                     { label: "Planejamento (20 min)", duration: 20, icon: "📝" },
                     { label: "Estudo com IA (50 min)", duration: 50, icon: "💻" },
@@ -497,13 +497,46 @@
                                         <span class="font-bold color-metodologia">Estudo com IA:</span> Agora, use a IA como assistente para criar os "blocos" (componentes) que você planejou.
                                         <ul class="list-disc ml-6 mt-2 space-y-1 text-stone-400">
                                             <li>Use prompts específicos para pedir <b>apenas</b> as funções isoladas (ex: <code>"Crie uma função em C que receba um array de Contatos e um novo Contato, e o adicione ao array"</code>).</li>
-                                            <li><b class="text-stone-100">Sua Tarefa Principal:</b> Escrever a função <code>main()</code> manualmente e <b>integrar</b> as peças geradas. Você é o responsável por fazer os componentes "conversarem".</li>
+                                            <li><b class="text-stone-100">Sua Tarefa Principal:</b> Escrever a função <code>main()</code> manually e <b>integrar</b> as peças geradas. Você é o responsável por fazer os componentes "conversarem".</li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <span class="font-bold color-metodologia">Reflexão (A Revisão):</span> Analise o processo. Foi mais fácil ou mais difícil do que pedir o programa inteiro? Quais problemas você encontrou ao integrar as peças? Como essa abordagem força você a entender a "visão global" do projeto, algo que a IA não tem?</li>
+                                        <span class="font-bold color-metodologia">Reflexão:</span> Analise o processo. Foi mais fácil ou mais difícil do que pedir o programa inteiro? Quais problemas você encontrou ao integrar as peças? Como essa abordagem força você a entender a "visão global" do projeto, algo que a IA não tem?</li>
                                 </ul>
                             </div>
+                            <div class="mt-6 border-t border-stone-700 pt-6">
+                                <h3 class="text-lg font-semibold text-stone-100 mb-3">📚 Referências</h3>
+                                <ul class="list-disc list-inside space-y-3 text-stone-300 text-sm">
+                                    <li>
+                                        <strong class="color-metodologia">Neuroscience News - When Using AI, Users Fall for the Dunning-Kruger Trap in Reverse</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Descreve a "descarga cognitiva" (cognitive offloading), onde os usuários confiam nas respostas da IA "sem reflexão", e destaca a necessidade de fomentar a "metacognição".</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://neurosciencenews.com/ai-dunning-kruger-trap-29869/" target="_blank" class="text-stone-300 hover:underline break-all">https://neurosciencenews.com/ai-dunning-kruger-trap-29869/</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">University of Edinburgh - Using generative AI in your studies</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Valida o termo "preguiça metacognitiva" (metacognitive laziness) como um risco real da confiança excessiva (over-reliance) em IAs.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://www.ed.ac.uk/files/atoms/files/generative-ai-guidance-for-students.pdf" target="_blank" class="text-stone-300 hover:underline break-all">https://www.ed.ac.uk/files/atoms/files/generative-ai-guidance-for-students.pdf</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">SoftwareSeni - Spec-Driven Development in 2025</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Define o "Desenvolvimento Orientado por Especificações" como a metodologia onde desenvolvedores humanos focam na "arquitetura, requisitos e validação", em vez da implementação manual.</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://www.softwareseni.com/spec-driven-development-in-2025-the-complete-guide-to-using-ai-to-write-production-code/" target="_blank" class="text-stone-300 hover:underline break-all">https://www.softwareseni.com/spec-driven-development-in-2025...</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">GitHub - Spec-Kit Toolkit</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> O próprio GitHub promove uma metodologia onde a especificação (o plano do arquiteto) define o "o quê" antes que a IA gere o "como".</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://github.com/github/spec-kit" target="_blank" class="text-stone-300 hover:underline break-all">https://github.com/github/spec-kit</a>
+                                    </li>
+                                    <li>
+                                        <strong class="color-metodologia">Stanford HAI - Humans in the Loop: The Design of Interactive AI Systems</strong><br>
+                                        <span class="text-stone-400"><strong>Conceito-chave:</strong> Descreve a abordagem "Human-in-the-Loop" (Humano no Ciclo) como um design focado na "orientação humana", onde o sistema é construído para a colaboração, não para "acertar tudo de uma vez".</span><br>
+                                        <span class="text-stone-400"><strong>Link:</strong> </span><a href="https://hai.stanford.edu/news/humans-loop-design-interactive-ai-systems" target="_blank" class="text-stone-300 hover:underline break-all">https://hai.stanford.edu/news/humans-loop-design-interactive-ai-systems</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="text-center color-plano-pro text-sm mt-6 font-semibold">
+                                A IA pode lhe dar os tijolos, mas só o arquiteto (você) pode construir a obra. Pense na estrutura, delegue as tarefas.
+                            </p>
                 `
             },
             {
@@ -616,8 +649,7 @@
         }
 
         /**
-         * CORREÇÃO: A função agora aceita 'encontroIndex' para aplicar a lógica de cor corretamente,
-         * em vez de depender da variável global 'currentEncontroIndex'.
+         * Renderiza os cards de atividades para um encontro específico.
          */
         function renderActivityCards(activities, encontroIndex) {
             if (!activities || activities.length === 0) {
@@ -626,16 +658,17 @@
             
             let html = '<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">';
             activities.forEach((activity, index) => {
-                let borderClass = 'border-secondary'; 
+                let borderClass = 'border-secondary'; // Cor Padrão (Fúcsia)
                 
-                // Aplica cores personalizadas para o Encontro 1, 2 e 3 (índices 0, 1 e 2)
-                if (encontroIndex === 0 || encontroIndex === 1 || encontroIndex === 2) {
+                // Aplica cores personalizadas (tons de roxo) para os Encontros 1, 2, 3 e 4 (índices 0, 1, 2, 3)
+                if (encontroIndex >= 0 && encontroIndex <= 3) {
                     if (index === 0) borderClass = 'border-color-e1-0';
                     else if (index === 1) borderClass = 'border-color-e1-1';
                     else if (index === 2) borderClass = 'border-color-e1-2';
                     else if (index === 3) borderClass = 'border-color-e1-3';
                     else if (index === 4) borderClass = 'border-color-e1-4';
                 }
+                // Para encontros 5 e 6 (índices 4, 5), a 'border-secondary' padrão será usada.
 
                 html += `
                             <div class="bg-stone-700/60 p-3 rounded-lg border-2 ${borderClass} shadow-sm flex items-center">
@@ -690,9 +723,8 @@
                 'rgba(255, 255, 255, 1)'
             ];
 
-            // Cores personalizadas para o gráfico do Encontro 1, 2 e 3 (índices 0, 1 e 2)
-            // Esta lógica estava correta pois já usava 'encontroIndex'
-            if (encontroIndex === 0 || encontroIndex === 1 || encontroIndex === 2) {
+            // Cores personalizadas (tons de roxo) para o gráfico do Encontro 1, 2, 3 e 4 (índices 0, 1, 2, 3)
+            if (encontroIndex >= 0 && encontroIndex <= 3) {
                 backgroundColors = [
                     'rgba(104, 92, 116, 0.9)',
                     'rgba(131, 116, 146, 0.9)',
@@ -755,7 +787,7 @@
         }
 
         /**
-         * CORREÇÃO: A função agora passa o 'index' para 'renderActivityCards'.
+         * Busca e renderiza os cards de atividades para o índice fornecido.
          */
         function getActivityCardsHTML(index) {
             return renderActivityCards(courseData[index].activities, index);
@@ -794,6 +826,7 @@
             const mainContent = document.getElementById('main-content');
             
             courseData.forEach((encontro, index) => {
+                
                 // **MELHORIA:** Calcula a duração total para este encontro
                 const totalDuration = encontro.activities.reduce((acc, act) => acc + act.duration, 0);
                 const formattedDuration = formatDuration(totalDuration);
@@ -805,12 +838,22 @@
                 button.textContent = encontro.title === 'Extras' ? 'Extras' : `Encontro ${index + 1}`;
                 button.dataset.index = index;
                 
-                // Lógica de "travar" encontros foi removida. Todos estão liberados.
-                button.onclick = () => showEncontro(index);
+                // Adiciona a classe 'hidden-access' para os Encontros 5 e 6 (índices 4 e 5)
+                if (index === 4 || index === 5) {
+                    button.classList.add('hidden-access');
+                } else {
+                    // Somente adiciona o evento de clique para botões ativos
+                    button.onclick = () => showEncontro(index);
+                }
 
                 stepperNav.appendChild(button);
 
-                // 2. Criar Divs de Conteúdo
+                // Pula a criação do CONTEÚDO para os Encontros 5 e 6
+                if (index === 4 || index === 5) {
+                    return; // Sai da iteração atual do loop, pulando a criação do conteúdo
+                }
+
+                // 2. Criar Divs de Conteúdo (apenas para encontros 1-4 e Extras)
                 const isExtra = encontro.title === 'Extras';
 
                 const contentDiv = document.createElement('div');
@@ -844,59 +887,6 @@
                         `;
                     }
                     
-                    // CARD SOBRE ANÁLISE CRÍTICA E PLÁGIO (APENAS ENCONTRO 3)
-                    if (index === 2) {
-                        mainContentHtml += `
-                                <div class="mt-6 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md text-left">
-                                    <h4 class="font-bold text-stone-100 mb-2">🔬 O que é Análise Crítica e Plágio?</h4>
-                                    <p class="text-sm text-stone-300 mb-2"><span class="font-semibold color-metodologia">Análise Crítica:</span> É o ato de <span class="font-semibold text-stone-100">não</span> aceitar uma informação (especialmente um código de IA) como verdade absoluta. É o processo de <b class="text-stone-100">questionar, testar e verificar</b>. Pergunte-se: "Isso está correto? Isso é seguro? Isso é eficiente? Isso faz sentido no meu projeto?"</p>
-                                    <p class="text-sm text-stone-300"><span class="font-semibold color-metodologia">Risco de Plágio:</span> As IAs foram treinadas com vastas quantidades de código da internet. Às vezes, elas podem gerar blocos de código que são <span class="font-semibold text-stone-100">cópias diretas</span> de repositórios públicos (ex: GitHub). Usar esse código sem entender e sem dar o devido crédito pode ser considerado plágio ou até violar licenças de software.</p>
-                                </div>
-                        `;
-                        
-                        // NOVO CARD: GUIA DE AVALIAÇÃO CRÍTICA (ENCONTRO 3)
-                        mainContentHtml += `
-                                <div class="mt-6 border-t border-stone-700 pt-6">
-                                    <h3 class="text-lg font-semibold text-stone-100 mb-4">🧩 Guia de Avaliação Crítica de Código C Gerado por IA</h3>
-                                    <p class="text-stone-400 text-sm mb-4">Use estes tópicos para "interrogar" o código que a IA produziu:</p>
-                                    <ul class="space-y-4 text-stone-300 text-sm">
-                                        <li>
-                                            <span class="font-bold color-metodologia">1. Correção Funcional e Lógica:</span><br>
-                                            O código realmente faz o que foi pedido? A IA entendeu a lógica e os casos estudados, ou apenas produziu algo que parece correto superficialmente?
-                                        </li>
-                                        <li>
-                                            <span class="font-bold color-metodologia">2. Segurança e Vulnerabilidades:</span><br>
-                                            Este é crítico. A IA pode ter sido treinada em código antigo ou inseguro. Verifique ativamente falhas comuns (ex: buffer overflow em C).
-                                        </li>
-                                        <li>
-                                            <span class="font-bold color-metodologia">3. Contexto e Integração:</span><br>
-                                            O código se encaixa no restante do objetivo? Ele usa as convenções, variáveis e padrões já existentes ou está "isolado" e desalinhado?
-                                        </li>
-                                        <li>
-                                            <span class="font-bold color-metodologia">4. Eficiência e Otimização:</span><br>
-                                            A IA geralmente oferece a solução mais fácil, não a mais performática. Avalie se há loops desnecessários, linhas ineficientes ou uso excessivo de memória.
-                                        </li>
-                                        <li>
-                                            <span class="font-bold color-metodologia">5. Manutenção e Legibilidade:</span><br>
-                                            O código é legível para um humano? É fácil de manter e depurar? A IA pode gerar código "inteligente" (complexo) que é difícil de dar manutenção.
-                                        </li>
-                                        <li>
-                                            <span class="font-bold color-metodologia">6. Dependências e Licenciamento:</span><br>
-                                            A IA sugeriu bibliotecas novas? Elas são necessárias e seguras? O código gerado é uma cópia direta de outro lugar (risco de plágio ou violação de licença)?
-                                        </li>
-                                    </ul>
-                                </div>
-                        `;
-                        
-                        // NOVO CARD: IMPORTANTE (ANALOGIA DO ESTAGIÁRIO)
-                        mainContentHtml += `
-                                <div class="mt-6 p-4 bg-stone-700/60 rounded-lg border-2 border-analogy-card shadow-md text-left">
-                                    <h4 class="font-bold text-stone-100 mb-2"><span class="color-secondary">⚠️</span> Importante: A Analogia do Estagiário</h4>
-                                    <p class="text-sm text-stone-300">Pensem na IA como um <span class="font-semibold color-metodologia">estagiário genial</span>: é incrivelmente rápido e sabe muito, mas não tem experiência prática nem senso de responsabilidade. Ele entrega o primeiro rascunho. <span class="font-semibold color-metodologia">Você é o Sênior</span> que deve revisar, corrigir e aprovar.</p>
-                                </div>
-                        `;
-                    }
-
                     // TÓPICOS-CHAVE (APENAS ENCONTRO 4)
                     if (index === 3) {
                         mainContentHtml += `
@@ -969,6 +959,59 @@
 
                                 </div>
                             </div>
+                        `;
+                    }
+                    
+                    // CARD SOBRE ANÁLISE CRÍTICA E PLÁGIO (APENAS ENCONTRO 3)
+                    if (index === 2) {
+                        mainContentHtml += `
+                                <div class="mt-6 p-4 bg-dica-bonus rounded-lg border border-dica-bonus-custom shadow-md text-left">
+                                    <h4 class="font-bold text-stone-100 mb-2">🔬 O que é Análise Crítica e Plágio?</h4>
+                                    <p class="text-sm text-stone-300 mb-2"><span class="font-semibold color-metodologia">Análise Crítica:</span> É o ato de <span class="font-semibold text-stone-100">não</span> aceitar uma informação (especialmente um código de IA) como verdade absoluta. É o processo de <b class="text-stone-100">questionar, testar e verificar</b>. Pergunte-se: "Isso está correto? Isso é seguro? Isso é eficiente? Isso faz sentido no meu projeto?"</p>
+                                    <p class="text-sm text-stone-300"><span class="font-semibold color-metodologia">Risco de Plágio:</span> As IAs foram treinadas com vastas quantidades de código da internet. Às vezes, elas podem gerar blocos de código que são <span class="font-semibold text-stone-100">cópias diretas</span> de repositórios públicos (ex: GitHub). Usar esse código sem entender e sem dar o devido crédito pode ser considerado plágio ou até violar licenças de software.</p>
+                                </div>
+                        `;
+                        
+                        // NOVO CARD: GUIA DE AVALIAÇÃO CRÍTICA (ENCONTRO 3)
+                        mainContentHtml += `
+                                <div class="mt-6 border-t border-stone-700 pt-6">
+                                    <h3 class="text-lg font-semibold text-stone-100 mb-4">🧩 Guia de Avaliação Crítica de Código C Gerado por IA</h3>
+                                    <p class="text-stone-400 text-sm mb-4">Use estes tópicos para "interrogar" o código que a IA produziu:</p>
+                                    <ul class="space-y-4 text-stone-300 text-sm">
+                                        <li>
+                                            <span class="font-bold color-metodologia">1. Correção Funcional e Lógica:</span><br>
+                                            O código realmente faz o que foi pedido? A IA entendeu a lógica e os casos estudados, ou apenas produziu algo que parece correto superficialmente?
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">2. Segurança e Vulnerabilidades:</span><br>
+                                            Este é crítico. A IA pode ter sido treinada em código antigo ou inseguro. Verifique ativamente falhas comuns (ex: buffer overflow em C).
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">3. Contexto e Integração:</span><br>
+                                            O código se encaixa no restante do objetivo? Ele usa as convenções, variáveis e padrões já existentes ou está "isolado" e desalinhado?
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">4. Eficiência e Otimização:</span><br>
+                                            A IA geralmente oferece a solução mais fácil, não a mais performática. Avalie se há loops desnecessários, linhas ineficientes ou uso excessivo de memória.
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">5. Manutenção e Legibilidade:</span><br>
+                                            O código é legível para um humano? É fácil de manter e depurar? A IA pode gerar código "inteligente" (complexo) que é difícil de dar manutenção.
+                                        </li>
+                                        <li>
+                                            <span class="font-bold color-metodologia">6. Dependências e Licenciamento:</span><br>
+                                            A IA sugeriu bibliotecas novas? Elas são necessárias e seguras? O código gerado é uma cópia direta de outro lugar (risco de plágio ou violação de licença)?
+                                        </li>
+                                    </ul>
+                                </div>
+                        `;
+                        
+                        // NOVO CARD: IMPORTANTE (ANALOGIA DO ESTAGIÁRIO)
+                        mainContentHtml += `
+                                <div class="mt-6 p-4 bg-stone-700/60 rounded-lg border-2 border-analogy-card shadow-md text-left">
+                                    <h4 class="font-bold text-stone-100 mb-2"><span class="color-secondary">⚠️</span> Importante: A Analogia do Estagiário</h4>
+                                    <p class="text-sm text-stone-300">Pensem na IA como um <span class="font-semibold color-metodologia">estagiário genial</span>: é incrivelmente rápido e sabe muito, mas não tem experiência prática nem senso de responsabilidade. Ele entrega o primeiro rascunho. <span class="font-semibold color-metodologia">Você é o Sênior</span> que deve revisar, corrigir e aprovar.</p>
+                                </div>
                         `;
                     }
 
