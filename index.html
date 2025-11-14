@@ -870,9 +870,6 @@ int main() {
             }
         ];
 
-        // Variável global para a instância do Chart.js
-        let chartInstance = null; 
-
         // --- Funções Auxiliares ---
 
         /**
@@ -904,157 +901,7 @@ int main() {
             }
         }
 
-        /**
-         * Renderiza os cards de atividades para um encontro específico.
-         */
-        function renderActivityCards(activities, encontroIndex) {
-            if (!activities || activities.length === 0) {
-                return '';
-            }
-            
-            let html = '<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">';
-            activities.forEach((activity, index) => {
-                let borderClass = 'border-secondary'; // Cor Padrão (Fúcsia)
-                
-                // Aplica cores personalizadas (tons de roxo) para os Encontros 1, 2, 3 e 4 (índices 0, 1, 2, 3)
-                if (encontroIndex >= 0 && encontroIndex <= 3) {
-                    if (index === 0) borderClass = 'border-color-e1-0';
-                    else if (index === 1) borderClass = 'border-color-e1-1';
-                    else if (index === 2) borderClass = 'border-color-e1-2';
-                    else if (index === 3) borderClass = 'border-color-e1-3';
-                    else if (index === 4) borderClass = 'border-color-e1-4';
-                }
-                // *** MUDANÇA PARA E5 ***
-                // Para o encontro 5 (índice 4), usamos as cores arroxeadas também
-                if (encontroIndex === 4) {
-                    if (index === 0) borderClass = 'border-color-e1-1';
-                    else if (index === 1) borderClass = 'border-color-e1-2';
-                    else if (index === 2) borderClass = 'border-color-e1-3';
-                }
-
-
-                html += `
-                            <div class="bg-stone-700/60 p-3 rounded-lg border-2 ${borderClass} shadow-sm flex items-center">
-                                <span class="text-2xl mr-3">${activity.icon}</span>
-                                <div class="flex-grow">
-                                    <h4 class="font-medium text-stone-100 text-sm">${activity.label}</h4>
-                                    <p class="text-xs text-zinc-300 font-semibold">${activity.duration} min</p>
-                                </div>
-                            </div>
-                `;
-            });
-            html += '</div>';
-            return html;
-        }
-
         let currentEncontroIndex = 0; // Mantém o rastreio do índice atual
-
-        function renderChart(encontroIndex) {
-            const canvas = document.getElementById(`chart-${encontroIndex}`);
-            if (!canvas) return;
-
-            // **CORREÇÃO:** Lê a duração total do atributo data-total-duration do canvas
-            const totalDuration = parseInt(canvas.dataset.totalDuration, 10) || 100;
-
-            const data = courseData[encontroIndex];
-            
-            // Se não houver atividades (como na aba "Extras"), esconde o canvas e destrói o gráfico antigo.
-            if (!data.activities || data.activities.length === 0) {
-                if (chartInstance) {
-                    chartInstance.destroy();
-                    chartInstance = null;
-                }
-                canvas.style.display = 'none'; 
-                return;
-            } else {
-                canvas.style.display = 'block'; 
-            }
-
-            const ctx = canvas.getContext('2d');
-            
-            // Paleta de cores padrão
-            let backgroundColors = [
-                'rgba(34, 211, 238, 0.9)', 
-                'rgba(232, 121, 249, 0.9)',
-                'rgba(212, 212, 216, 0.9)',
-                'rgba(113, 113, 113, 0.9)',
-                'rgba(68, 64, 60, 0.9)',
-                'rgba(255, 255, 255, 0.9)'
-            ];
-            let hoverBackgroundColors = [
-                'rgba(87, 83, 78, 1)',
-                'rgba(255, 255, 255, 1)'
-            ];
-
-            // Cores personalizadas (tons de roxo) para o gráfico do Encontro 1, 2, 3, 4 E 5 (índices 0-4)
-            if (encontroIndex >= 0 && encontroIndex <= 4) { // <-- MUDANÇA AQUI
-                backgroundColors = [
-                    'rgba(104, 92, 116, 0.9)',
-                    'rgba(131, 116, 146, 0.9)',
-                    'rgba(155, 143, 167, 0.9)',
-                    'rgba(180, 171, 189, 0.9)',
-                    'rgba(205, 199, 211, 0.9)',
-                ];
-                hoverBackgroundColors = [
-                    'rgba(94, 82, 106, 1)',
-                    'rgba(121, 106, 136, 1)',
-                    'rgba(145, 133, 157, 1)',
-                    'rgba(170, 161, 179, 1)',
-                    'rgba(195, 187, 203, 1)',
-                ];
-            }
-
-            const coresDoGrafico = backgroundColors.slice(0, data.activities.length);
-            const coresDoGraficoHover = hoverBackgroundColors.slice(0, data.activities.length);
-
-            // Destrói a instância anterior do gráfico para evitar sobreposição
-            if (chartInstance) {
-                chartInstance.destroy();
-            }
-            
-            chartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Duração (min)'],
-                    datasets: data.activities.map((activity, index) => ({
-                        label: activity.label,
-                        data: [activity.duration],
-                        backgroundColor: coresDoGrafico[index % coresDoGrafico.length],
-                        hoverBackgroundColor: coresDoGraficoHover[index % coresDoGraficoHover.length],
-                        borderWidth: 0,
-                    }))
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        // **CORREÇÃO:** Usa a 'totalDuration' dinâmica como máximo
-                        x: { stacked: true, display: false, max: totalDuration },
-                        y: { stacked: true, display: false }
-                    },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    const dataset = context.dataset;
-                                    const value = context.raw;
-                                    return `${dataset.label}: ${value} min`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        /**
-         * Busca e renderiza os cards de atividades para o índice fornecido.
-         */
-        function getActivityCardsHTML(index) {
-            return renderActivityCards(courseData[index].activities, index);
-        }
         
         function showEncontro(index) {
             currentEncontroIndex = index; // Atualiza o índice global
@@ -1079,8 +926,6 @@ int main() {
                 activeButton.classList.add('active');
             }
             
-            // Renderiza o gráfico para o encontro atual
-            renderChart(index); 
         }
 
         // --- Função INIT (Principal) ---
@@ -1090,10 +935,6 @@ int main() {
             
             courseData.forEach((encontro, index) => {
                 
-                // **MELHORIA:** Calcula a duração total para este encontro
-                const totalDuration = encontro.activities.reduce((acc, act) => acc + act.duration, 0);
-                const formattedDuration = formatDuration(totalDuration);
-
                 // 1. Criar Botões do Stepper
                 const button = document.createElement('button');
                 button.className = 'stepper-btn px-3 py-2 text-sm md:px-4 md:py-2 md:text-base rounded-md border shadow-sm';
@@ -1300,18 +1141,6 @@ int main() {
                                 </div>
                         `;
                     }
-
-                    // DISTRIBUIÇÃO DO TEMPO (Gráfico + Cards)
-                    // **CORREÇÃO:** Título do tempo e canvas agora são dinâmicos
-                    mainContentHtml += `
-                                <div class="mt-6">
-                                    <h3 class="text-lg font-semibold text-stone-100 mb-2">⏱️ Distribuição do Tempo (${formattedDuration})</h3>
-                                    <div class="chart-container">
-                                        <canvas id="chart-${index}" data-total-duration="${totalDuration}"></canvas>
-                                    </div>
-                                    <!-- Os cards de atividades são renderizados aqui --><div id="activities-cards-${index}">${getActivityCardsHTML(index)}</div>
-                                </div>
-                    `;
 
                     // FERRAMENTAS ÚTEIS (APENAS ENCONTRO 1)
                     if (index === 0) {
